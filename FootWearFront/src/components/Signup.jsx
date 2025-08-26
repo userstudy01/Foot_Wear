@@ -562,249 +562,249 @@
 
 // export default Signup;
 
-import React, { useState } from "react";
-import Background from "../assets/bg-1.jpg";
-import { useNavigate } from "react-router-dom";
-import { handleError, handleSuccess } from "../Utils";
-import { AiOutlineExclamationCircle } from "react-icons/ai";
+// import React, { useState } from "react";
+// import Background from "../assets/bg-1.jpg";
+// import { useNavigate } from "react-router-dom";
+// import { handleError, handleSuccess } from "../Utils";
+// import { AiOutlineExclamationCircle } from "react-icons/ai";
 
-const Signup = () => {
-    const navigate = useNavigate();
+// const Signup = () => {
+//     const navigate = useNavigate();
 
-    const [signUPInfo, setSignUpInfo] = useState({
-        FullName: "",
-        Email: "",
-        Phone_Number: "",
-        Password: "",
-        ConfirmPassword: "",
-    });
+//     const [signUPInfo, setSignUpInfo] = useState({
+//         FullName: "",
+//         Email: "",
+//         Phone_Number: "",
+//         Password: "",
+//         ConfirmPassword: "",
+//     });
 
-    const [errors, setErrors] = useState({});
+//     const [errors, setErrors] = useState({});
 
-    const handleChange = (e) => {
-        const { name, value } = e.target;
-        if (name === "Phone_Number") {
-            // Remove non-numeric characters
-            const numericValue = value.replace(/\D/g, "");
-            // Limit to 10 digits
-            if (numericValue.length <= 10) {
-                setSignUpInfo((prevData) => ({
-                    ...prevData,
-                    [name]: numericValue,
-                }));
-            }
-        } else {
-            setSignUpInfo((prevData) => ({
-                ...prevData,
-                [name]: value,
-            }));
-        }
+//     const handleChange = (e) => {
+//         const { name, value } = e.target;
+//         if (name === "Phone_Number") {
+//             // Remove non-numeric characters
+//             const numericValue = value.replace(/\D/g, "");
+//             // Limit to 10 digits
+//             if (numericValue.length <= 10) {
+//                 setSignUpInfo((prevData) => ({
+//                     ...prevData,
+//                     [name]: numericValue,
+//                 }));
+//             }
+//         } else {
+//             setSignUpInfo((prevData) => ({
+//                 ...prevData,
+//                 [name]: value,
+//             }));
+//         }
 
-        setErrors((prev) => ({
-            ...prev,
-            [name]: "",
-        }));
-    };
+//         setErrors((prev) => ({
+//             ...prev,
+//             [name]: "",
+//         }));
+//     };
 
-    const validate = () => {
-        let newErrors = {};
+//     const validate = () => {
+//         let newErrors = {};
 
-        if (!signUPInfo.FullName) {
-            newErrors.FullName = "Full Name is required";
-        } else if (signUPInfo.FullName.length < 3) {
-            newErrors.FullName = "Full Name must be at least 3 characters";
-        }
+//         if (!signUPInfo.FullName) {
+//             newErrors.FullName = "Full Name is required";
+//         } else if (signUPInfo.FullName.length < 3) {
+//             newErrors.FullName = "Full Name must be at least 3 characters";
+//         }
 
-        if (!signUPInfo.Phone_Number) {
-            newErrors.Phone_Number = "Phone number is required";
-        } else if (!/^\d{10}$/.test(signUPInfo.Phone_Number)) {
-            newErrors.Phone_Number = "Phone number must be 10 digits";
-        }
+//         if (!signUPInfo.Phone_Number) {
+//             newErrors.Phone_Number = "Phone number is required";
+//         } else if (!/^\d{10}$/.test(signUPInfo.Phone_Number)) {
+//             newErrors.Phone_Number = "Phone number must be 10 digits";
+//         }
 
-        if (!signUPInfo.Email) {
-            newErrors.Email = "Email is required";
-        } else if (!/\S+@\S+\.\S+/.test(signUPInfo.Email)) {
-            newErrors.Email = "Enter a valid email";
-        }
+//         if (!signUPInfo.Email) {
+//             newErrors.Email = "Email is required";
+//         } else if (!/\S+@\S+\.\S+/.test(signUPInfo.Email)) {
+//             newErrors.Email = "Enter a valid email";
+//         }
 
-        if (!signUPInfo.Password) {
-            newErrors.Password = "Password is required";
-        } else if (signUPInfo.Password.length < 6) {
-            newErrors.Password = "Password must be at least 6 characters";
-        }
+//         if (!signUPInfo.Password) {
+//             newErrors.Password = "Password is required";
+//         } else if (signUPInfo.Password.length < 6) {
+//             newErrors.Password = "Password must be at least 6 characters";
+//         }
 
-        if (!signUPInfo.ConfirmPassword) {
-            newErrors.ConfirmPassword = "Confirm Password is required";
-        } else if (signUPInfo.Password !== signUPInfo.ConfirmPassword) {
-            newErrors.ConfirmPassword = "Passwords do not match";
-        }
+//         if (!signUPInfo.ConfirmPassword) {
+//             newErrors.ConfirmPassword = "Confirm Password is required";
+//         } else if (signUPInfo.Password !== signUPInfo.ConfirmPassword) {
+//             newErrors.ConfirmPassword = "Passwords do not match";
+//         }
 
-        setErrors(newErrors);
+//         setErrors(newErrors);
 
-        // Show toast if all fields are missing
-        if (Object.keys(newErrors).length > 0) {
-            if (
-                !signUPInfo.FullName ||
-                !signUPInfo.Email ||
-                !signUPInfo.Phone_Number ||
-                !signUPInfo.Password ||
-                !signUPInfo.ConfirmPassword
-            ) {
-                handleError("Please fill all the fields");
-            } else {
-                handleError("Please correct the highlighted errors");
-            }
-        }
+//         // Show toast if all fields are missing
+//         if (Object.keys(newErrors).length > 0) {
+//             if (
+//                 !signUPInfo.FullName ||
+//                 !signUPInfo.Email ||
+//                 !signUPInfo.Phone_Number ||
+//                 !signUPInfo.Password ||
+//                 !signUPInfo.ConfirmPassword
+//             ) {
+//                 handleError("Please fill all the fields");
+//             } else {
+//                 handleError("Please correct the highlighted errors");
+//             }
+//         }
 
-        return Object.keys(newErrors).length === 0;
-    };
+//         return Object.keys(newErrors).length === 0;
+//     };
 
-    const handleSubmit = async (e) => {
-        e.preventDefault();
-        if (!validate()) return;
+//     const handleSubmit = async (e) => {
+//         e.preventDefault();
+//         if (!validate()) return;
 
-        try {
-            const url = "http://localhost:8000/api/user/register";
-            const response = await fetch(url, {
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify(signUPInfo),
-            });
+//         try {
+//             const url = "http://localhost:8000/api/user/register";
+//             const response = await fetch(url, {
+//                 method: "POST",
+//                 headers: { "Content-Type": "application/json" },
+//                 body: JSON.stringify(signUPInfo),
+//             });
 
-            const result = await response.json();
+//             const result = await response.json();
 
-            if (response.ok) {
-                handleSuccess("Registered successfully...");
-                navigate("/signin");
-            } else {
-                handleError(result.message || "Registration failed");
-            }
-        } catch (error) {
-            handleError("Server error, please try again later");
-        }
-    };
+//             if (response.ok) {
+//                 handleSuccess("Registered successfully...");
+//                 navigate("/signin");
+//             } else {
+//                 handleError(result.message || "Registration failed");
+//             }
+//         } catch (error) {
+//             handleError("Server error, please try again later");
+//         }
+//     };
 
-    return (
-        <div className="min-h-screen flex flex-col lg:flex-row">
-            {/* Left Side */}
-            <div className="relative w-full lg:w-1/2 h-56 sm:h-72 md:h-96 lg:h-auto">
-                <img
-                    src={Background}
-                    alt="Interior"
-                    className="absolute inset-0 w-full h-full object-cover"
-                />
-                <div className="absolute inset-0 bg-gradient-to-r from-black/20 to-transparent"></div>
+//     return (
+//         <div className="min-h-screen flex flex-col lg:flex-row">
+//             {/* Left Side */}
+//             <div className="relative w-full lg:w-1/2 h-56 sm:h-72 md:h-96 lg:h-auto">
+//                 <img
+//                     src={Background}
+//                     alt="Interior"
+//                     className="absolute inset-0 w-full h-full object-cover"
+//                 />
+//                 <div className="absolute inset-0 bg-gradient-to-r from-black/20 to-transparent"></div>
 
-                <div className="relative z-10 text-white px-4 sm:px-8 md:px-12 flex flex-col justify-center h-full">
-                    <h1 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold mb-2 sm:mb-4">
-                        Turn Your Ideas into Reality
-                    </h1>
-                    <p className="text-xs sm:text-sm md:text-base lg:text-lg max-w-md">
-                        Start for free and get attractive offers from the community
-                    </p>
-                </div>
-            </div>
+//                 <div className="relative z-10 text-white px-4 sm:px-8 md:px-12 flex flex-col justify-center h-full">
+//                     <h1 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold mb-2 sm:mb-4">
+//                         Turn Your Ideas into Reality
+//                     </h1>
+//                     <p className="text-xs sm:text-sm md:text-base lg:text-lg max-w-md">
+//                         Start for free and get attractive offers from the community
+//                     </p>
+//                 </div>
+//             </div>
 
-            {/* Right Side Form */}
-            <div className="flex w-full lg:w-1/2 justify-center items-center bg-white">
-                <div className="w-full max-w-md px-4 sm:px-8 py-8 sm:py-12">
-                    <h2 className="text-lg sm:text-xl md:text-2xl font-bold mb-2">
-                        Sign Up Page
-                    </h2>
-                    <p className="text-gray-600 mb-6 text-xs sm:text-sm md:text-base">
-                        Welcome! Please enter your details.
-                    </p>
-                    <form className="space-y-4 sm:space-y-5" onSubmit={handleSubmit}>
-                        <div className="relative">
-                            <input
-                                type="text"
-                                name="FullName"
-                                className={`w-full px-3 py-2 border rounded-md pr-10 ${errors.FullName ? "border-red-500" : ""
-                                    }`}
-                                onChange={handleChange}
-                                value={signUPInfo.FullName}
-                                placeholder="Full Name"
-                            />
-                            {/* {errors.FullName && (
-                                <AiOutlineExclamationCircle
-                                    className="absolute right-3 top-1/2 -translate-y-1/2 text-red-500 pointer-events-none"
-                                    size={18}
-                                />
-                            )} */}
-                            <p className="text-red-500 text-xs">{errors.FullName}</p>
-                        </div>
+//             {/* Right Side Form */}
+//             <div className="flex w-full lg:w-1/2 justify-center items-center bg-white">
+//                 <div className="w-full max-w-md px-4 sm:px-8 py-8 sm:py-12">
+//                     <h2 className="text-lg sm:text-xl md:text-2xl font-bold mb-2">
+//                         Sign Up Page
+//                     </h2>
+//                     <p className="text-gray-600 mb-6 text-xs sm:text-sm md:text-base">
+//                         Welcome! Please enter your details.
+//                     </p>
+//                     <form className="space-y-4 sm:space-y-5" onSubmit={handleSubmit}>
+//                         <div className="relative">
+//                             <input
+//                                 type="text"
+//                                 name="FullName"
+//                                 className={`w-full px-3 py-2 border rounded-md pr-10 ${errors.FullName ? "border-red-500" : ""
+//                                     }`}
+//                                 onChange={handleChange}
+//                                 value={signUPInfo.FullName}
+//                                 placeholder="Full Name"
+//                             />
+//                             {/* {errors.FullName && (
+//                                 <AiOutlineExclamationCircle
+//                                     className="absolute right-3 top-1/2 -translate-y-1/2 text-red-500 pointer-events-none"
+//                                     size={18}
+//                                 />
+//                             )} */}
+//                             <p className="text-red-500 text-xs">{errors.FullName}</p>
+//                         </div>
 
 
 
-                        <div>
-                            <input
-                                type="email"
-                                name="Email"
-                                className={`w-full px-3 py-2 border rounded-md ${errors.Email ? "border-red-500" : ""
-                                    }`}
-                                onChange={handleChange}
-                                value={signUPInfo.Email}
-                                placeholder="Email"
-                            />
-                            {errors.Email && (
-                                <p className="text-red-500 text-xs">{errors.Email}</p>
-                            )}
-                        </div>
-                        <div>
-                            <input
-                                type="text"
-                                name="Phone_Number"
-                                className={`w-full px-3 py-2 border rounded-md ${errors.Phone_Number ? "border-red-500" : ""
-                                    }`}
-                                onChange={handleChange}
-                                value={signUPInfo.Phone_Number}
-                                placeholder="Phone Number"
-                            />
-                            {errors.Phone_Number && (
-                                <p className="text-red-500 text-xs">{errors.Phone_Number}</p>
-                            )}
-                        </div>
-                        <div>
-                            <input
-                                type="password"
-                                name="Password"
-                                className={`w-full px-3 py-2 border rounded-md ${errors.Password ? "border-red-500" : ""
-                                    }`}
-                                onChange={handleChange}
-                                value={signUPInfo.Password}
-                                placeholder="Password"
-                            />
-                            {errors.Password && (
-                                <p className="text-red-500 text-xs">{errors.Password}</p>
-                            )}
-                        </div>
-                        <div>
-                            <input
-                                type="password"
-                                name="ConfirmPassword"
-                                className={`w-full px-3 py-2 border rounded-md ${errors.ConfirmPassword ? "border-red-500" : ""
-                                    }`}
-                                onChange={handleChange}
-                                value={signUPInfo.ConfirmPassword}
-                                placeholder="Confirm Password"
-                            />
-                            {errors.ConfirmPassword && (
-                                <p className="text-red-500 text-xs">{errors.ConfirmPassword}</p>
-                            )}
-                        </div>
-                        <button
-                            type="submit"
-                            className="w-full py-2 mt-5 sm:py-3 bg-black text-white rounded-md hover:bg-gray-800 text-sm sm:text-base"
-                        >
-                            Sign Up
-                        </button>
-                    </form>
-                </div>
-            </div>
-        </div>
-    );
-};
+//                         <div>
+//                             <input
+//                                 type="email"
+//                                 name="Email"
+//                                 className={`w-full px-3 py-2 border rounded-md ${errors.Email ? "border-red-500" : ""
+//                                     }`}
+//                                 onChange={handleChange}
+//                                 value={signUPInfo.Email}
+//                                 placeholder="Email"
+//                             />
+//                             {errors.Email && (
+//                                 <p className="text-red-500 text-xs">{errors.Email}</p>
+//                             )}
+//                         </div>
+//                         <div>
+//                             <input
+//                                 type="text"
+//                                 name="Phone_Number"
+//                                 className={`w-full px-3 py-2 border rounded-md ${errors.Phone_Number ? "border-red-500" : ""
+//                                     }`}
+//                                 onChange={handleChange}
+//                                 value={signUPInfo.Phone_Number}
+//                                 placeholder="Phone Number"
+//                             />
+//                             {errors.Phone_Number && (
+//                                 <p className="text-red-500 text-xs">{errors.Phone_Number}</p>
+//                             )}
+//                         </div>
+//                         <div>
+//                             <input
+//                                 type="password"
+//                                 name="Password"
+//                                 className={`w-full px-3 py-2 border rounded-md ${errors.Password ? "border-red-500" : ""
+//                                     }`}
+//                                 onChange={handleChange}
+//                                 value={signUPInfo.Password}
+//                                 placeholder="Password"
+//                             />
+//                             {errors.Password && (
+//                                 <p className="text-red-500 text-xs">{errors.Password}</p>
+//                             )}
+//                         </div>
+//                         <div>
+//                             <input
+//                                 type="password"
+//                                 name="ConfirmPassword"
+//                                 className={`w-full px-3 py-2 border rounded-md ${errors.ConfirmPassword ? "border-red-500" : ""
+//                                     }`}
+//                                 onChange={handleChange}
+//                                 value={signUPInfo.ConfirmPassword}
+//                                 placeholder="Confirm Password"
+//                             />
+//                             {errors.ConfirmPassword && (
+//                                 <p className="text-red-500 text-xs">{errors.ConfirmPassword}</p>
+//                             )}
+//                         </div>
+//                         <button
+//                             type="submit"
+//                             className="w-full py-2 mt-5 sm:py-3 bg-black text-white rounded-md hover:bg-gray-800 text-sm sm:text-base"
+//                         >
+//                             Sign Up
+//                         </button>
+//                     </form>
+//                 </div>
+//             </div>
+//         </div>
+//     );
+// };
 
-export default Signup;
+// export default Signup;
 
 
