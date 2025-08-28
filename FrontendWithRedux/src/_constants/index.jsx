@@ -1,1 +1,1 @@
-export * from "./SignIn.constant"
+export * from "./SignUp.constant"

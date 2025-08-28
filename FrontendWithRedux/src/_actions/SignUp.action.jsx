@@ -1,40 +1,40 @@
-import { signInConstant } from "../_constants";
-import { signInService } from "../_services";
+import { SignUpConstant } from "../_constants";
+import { SignupService } from "../_services";
 import { alert } from "../_utilities/alert";
 
 
-export const signInAction = {
-  SignInAction
+export const SignupAction = {
+  SignUpAction
 };
 
 
 
-function SignInAction(data) {
+function SignUpAction(data) {
   return (dispatch) => {
     dispatch(
       dispatchFunction({
-        type: signInConstant.SIGNIN_REQUEST,
+        type: SignUpConstant.SignUp_REQUEST,
         data: null,
       })
     );
     console.log("18 data", data);
-    console.log("19", { ...data});
+    console.log("19", { ...data });
 
-    signInService
-      .SignInService(data)
+    SignupService
+      .SignUpService(data)
       .then(
         (response) => {
           if (response.status === 200) {
             dispatch(
               dispatchFunction({
-                type: signInConstant.SIGNIN_SUCCESS,
+                type: SignUpConstant.SignUp_SUCCESS,
                 data: response,
               })
             );
           } else {
             dispatch(
               dispatchFunction({
-                type: signInConstant.SIGNIN_FAILURE,
+                type: SignUpConstant.SignUp_FAILURE,
                 data: null,
               })
             );
@@ -44,7 +44,7 @@ function SignInAction(data) {
         (error) => {
           dispatch(
             dispatchFunction({
-              type: signInConstant.SIGNIN_FAILURE,
+              type: SignUpConstant.SignUp_FAILURE,
               data: error,
             })
           );

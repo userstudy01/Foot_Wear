@@ -1,12 +1,12 @@
 import { commonFunctions } from "../_utilities/commonFunction";
 import { config } from "../config";
 
-export const signInService = {
-    SignInService
+export const SignupService = {
+    SignUpService
 }
 
 
-function SignInService(data) {
+function SignUpService(data) {
     const extraHeaders = {
         "Content-Type": "application/json",
     };

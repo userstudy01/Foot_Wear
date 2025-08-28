@@ -1,8 +1,8 @@
 import { combineReducers } from "redux";
-import { signIn } from "./SignIn.reducer";
+import { SignUp } from "./SignUp.reducer";
 
 const appReducers = combineReducers({
- signIn
+  SignUp
 });
 
 const rootreducer = (state, action) => {
