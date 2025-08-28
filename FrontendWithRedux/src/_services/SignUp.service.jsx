@@ -16,7 +16,11 @@ function SignUpService(data) {
         JSON.stringify(data)
     );
 
-    return fetch(`${config.url}/user/register`, requestOptions).then((response) =>
-        response.json()
-    );
+   return fetch(`${config.url}/user/register`, requestOptions).then(async (response) => {
+    const json = await response.json();
+    return {
+      httpStatus: response.status,  
+      ...json                       
+    };
+  });
 }

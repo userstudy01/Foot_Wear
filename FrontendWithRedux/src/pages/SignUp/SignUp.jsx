@@ -32,10 +32,10 @@ const SignUp = () => {
         [name]: value,
       }));
     }
-    setErrors((prev) => ({
-      ...prev,
-      [name]: "",
-    }));
+    // setErrors((prev) => ({
+    //   ...prev,
+    //   [name]: "",
+    // }));
   };
 
   // const handleSubmit = async (e) => {

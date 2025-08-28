@@ -24,7 +24,8 @@ function SignUpAction(data) {
       .SignUpService(data)
       .then(
         (response) => {
-          if (response.status === 200) {
+          console.log("Signup Response:", response);
+          if (response.httpStatus === 200) {
             dispatch(
               dispatchFunction({
                 type: SignUpConstant.SignUp_SUCCESS,
