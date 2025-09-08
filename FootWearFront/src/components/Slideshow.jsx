@@ -331,93 +331,1265 @@
 // };
 
 // export default Slideshow;
+// import { React, useState } from 'react'
+// import { motion, AnimatePresence } from "framer-motion";
+// import Images from '../assets/images'
 
-import React from 'react'
-import { Menu, Search, ShoppingCart, User } from "lucide-react";
-import { motion } from "framer-motion";
+// const products = [
+//     {
+//         id: 1,
+//         name: "LINAS CREW",
+//         desc: "minimalist. creative. flexible",
+//         price: "$183.76",
+//         sku: "su1",
+//         image: Images.Slide1,
+//         thumb: Images.Slide1,
+//     },
+//     {
+//         id: 2,
+//         name: "UNA CHAIR",
+//         desc: "modern. stylish. elegant",
+//         price: "$210.50",
+//         sku: "su2",
+//         image: Images.Slide2,
+//         thumb: Images.Slide2,
+//     },
+//     {
+//         id: 3,
+//         name: "ZEN CLOCK",
+//         desc: "calm. focused. timeless",
+//         price: "$159.90",
+//         sku: "su3",
+//         image: Images.Slide3,
+//         thumb: Images.Slide3,
+//     },
+// ];
+
+// const Slideshow = () => {
+//     const [activeIndex, setActiveIndex] = useState(0);
+//     const activeProduct = products[activeIndex];
+
+
+//     return (
+//         <div className="w-full max-w-7xl flex flex-col lg:flex-row items-center justify-between px-6 lg:px-12">
+
+//             {/* LEFT CONTENT */}
+//             <div className="flex-1 text-center lg:text-left space-y-6">
+//                 <h1 className="text-5xl lg:text-6xl font-extrabold uppercase leading-tight">
+//                     {activeProduct.name}
+//                 </h1>
+//                 <p className="text-gray-700 text-lg">{activeProduct.desc}</p>
+//                 <button className="bg-orange-500 text-white px-6 py-3 rounded-md font-semibold hover:bg-orange-600 transition">
+//                     Discover Now
+//                 </button>
+//                 <div className="pt-6">
+//                     <p className="uppercase text-sm text-gray-500 tracking-widest">
+//                         Price
+//                     </p>
+//                     <p className="text-2xl font-bold">{activeProduct.price}</p>
+//                 </div>
+//             </div>
+
+//             {/* RIGHT CONTENT */}
+//             <div className="flex-1 relative flex items-center justify-center mt-12 lg:mt-0">
+
+//                 {/* WHITE ROUND BACKGROUND */}
+//                 <div className="relative w-72 h-72 lg:w-[460px] lg:h-[460px] rounded-full bg-white shadow-xl flex items-center justify-center overflow-hidden">
+//                     <AnimatePresence mode="wait">
+//                         <motion.img
+//                             key={activeProduct.id}
+//                             src={activeProduct.image}
+//                             alt={activeProduct.name}
+//                             initial={{ opacity: 0, scale: 0.6, rotate: -20 }}
+//                             animate={{ opacity: 1, scale: 1, rotate: 0 }}
+//                             exit={{ opacity: 0, scale: 0.6, rotate: 20 }}
+//                             transition={{ duration: 0.8, ease: "easeInOut" }}
+//                             className="w-56 lg:w-80 object-contain"
+//                         />
+//                     </AnimatePresence>
+//                 </div>
+
+//                 {/* THUMBNAILS */}
+//                 <div className="absolute right-0 top-1/2 -translate-y-1/2 flex flex-col gap-6">
+//                     {products.map((product, index) => (
+//                         <button
+//                             key={product.id}
+//                             onClick={() => setActiveIndex(index)}
+//                             className={`w-20 h-20 rounded-full overflow-hidden border-2 shadow-md transition ${index === activeIndex
+//                                 ? "border-orange-500 opacity-100"
+//                                 : "border-transparent opacity-50 hover:opacity-80"
+//                                 }`}
+//                         >
+//                             <img
+//                                 src={product.thumb}
+//                                 alt={product.name}
+//                                 className="w-full h-full object-cover"
+//                             />
+//                         </button>
+//                     ))}
+//                 </div>
+//             </div>
+//         </div>
+//     );
+// };
+
+// export default Slideshow
+
+
+// import React, { useState } from "react";
+// import { motion, AnimatePresence } from "framer-motion";
+// import Images from "../assets/images";
+
+// const products = [
+//     {
+//         id: 1,
+//         name: "LINAS CREW",
+//         desc: "minimalist. creative. flexible",
+//         price: "$183.76",
+//         sku: "su1",
+//         image: Images.Slide1,
+//         thumb: Images.Slide1,
+//     },
+//     {
+//         id: 2,
+//         name: "UNA CHAIR",
+//         desc: "modern. stylish. elegant",
+//         price: "$210.50",
+//         sku: "su2",
+//         image: Images.Slide2,
+//         thumb: Images.Slide2,
+//     },
+//     {
+//         id: 3,
+//         name: "ZEN CLOCK",
+//         desc: "calm. focused. timeless",
+//         price: "$159.90",
+//         sku: "su3",
+//         image: Images.Slide3,
+//         thumb: Images.Slide3,
+//     },
+// ];
+
+// const Slideshow = () => {
+//     const [activeIndex, setActiveIndex] = useState(0);
+//     const activeProduct = products[activeIndex];
+
+//     return (
+//         <div className="min-h-screen bg-[#c7e4e4] flex flex-col lg:flex-row items-center justify-between relative overflow-x-hidden">
+//             {/* Left: Content */}
+//             <div className="w-full lg:w-1/2 px-6 md:px-16 flex flex-col justify-center pt-12 pb-8 lg:pt-0 lg:pr-6">
+//                 <h1 className="text-4xl md:text-5xl font-extrabold uppercase leading-tight tracking-tight mb-4">
+//                     {activeProduct.name.split(" ")[0]}
+//                     <br />
+//                     {activeProduct.name.split(" ")[1]}
+//                 </h1>
+//                 <p className="text-gray-600 text-lg mb-8 font-medium">
+//                     {activeProduct.desc}
+//                 </p>
+//                 <button className="w-fit bg-[#f68c2c] text-white px-8 py-3 rounded font-semibold shadow hover:bg-[#db7903] transition mb-10">
+//                     Discover Now
+//                 </button>
+//                 {/* Only show on lg screens */}
+//                 <div className="hidden md:block">
+//                     <div className="text-xs text-gray-500 tracking-widest mb-1 uppercase">
+//                         Price
+//                     </div>
+//                     <div className="text-2xl font-bold">{activeProduct.price}</div>
+//                 </div>
+//             </div>
+
+//             {/* Center: Main Image + animation */}
+//             <div className="w-full lg:w-auto flex flex-col items-center justify-center relative">
+//                 {/* Round white background */}
+//                 <div className="relative bg-white rounded-full shadow-2xl flex items-center justify-center w-64 h-64 md:w-[350px] md:h-[350px] lg:w-[420px] lg:h-[420px] transition-all duration-500">
+//                     <AnimatePresence mode="wait">
+//                         <motion.img
+//                             key={activeProduct.id}
+//                             src={activeProduct.image}
+//                             alt={activeProduct.name}
+//                             initial={{ opacity: 0, scale: 0.8, rotate: -10 }}
+//                             animate={{ opacity: 1, scale: 1, rotate: 0 }}
+//                             exit={{ opacity: 0, scale: 0.7, rotate: 12 }}
+//                             transition={{ duration: 0.6 }}
+//                             className="w-52 md:w-72 lg:w-80 object-contain select-none"
+//                             draggable="false"
+//                         />
+//                     </AnimatePresence>
+//                 </div>
+//                 {/* Show price under img only on mobile */}
+//                 <div className="md:hidden text-black text-xl mt-5 font-semibold">
+//                     {activeProduct.price}
+//                 </div>
+//             </div>
+
+//             {/* Right: Thumbnails + Info Box */}
+//             <div className="absolute z-30 right-2 top-1/2 -translate-y-1/2 flex-col hidden md:flex">
+//                 {products.map((product, idx) => (
+//                     <div key={product.id} className="mb-4">
+//                         <button
+//                             onClick={() => setActiveIndex(idx)}
+//                             className={`
+//                 flex items-center gap-3 text-left
+//                 bg-white/80 hover:bg-white transition shadow-md
+//                 rounded-full pl-3 pr-6 py-2 w-44
+//                 border-2 ${activeIndex === idx ? "border-[#f68c2c] ring-2 ring-[#f68c2c]" : "border-transparent"}
+//                 ${activeIndex === idx ? "opacity-100" : "opacity-60 hover:opacity-90"}
+//               `}
+//                         >
+//                             <img
+//                                 src={product.thumb}
+//                                 alt={product.name}
+//                                 className="w-10 h-10 rounded-full object-cover"
+//                                 style={{ opacity: activeIndex === idx ? 1 : 0.7 }}
+//                             />
+//                             <div className="flex flex-col">
+//                                 <span className="font-bold text-xs text-black leading-tight">
+//                                     {product.name}
+//                                 </span>
+//                                 <span className="text-gray-400 text-[10px] font-mono mt-1">#SKU: {product.sku}</span>
+//                             </div>
+//                         </button>
+//                     </div>
+//                 ))}
+//             </div>
+//             {/* Bottom thumbnails for mobile/tablet */}
+//             <div className="fixed z-30 bottom-3 left-0 right-0 flex md:hidden justify-center gap-3">
+//                 {products.map((product, idx) => (
+//                     <button
+//                         key={product.id}
+//                         onClick={() => setActiveIndex(idx)}
+//                         className={`w-14 h-14 rounded-full overflow-hidden shadow border-2 ${idx === activeIndex
+//                             ? "border-orange-500 opacity-100"
+//                             : "border-transparent opacity-60"
+//                             }`}
+//                     >
+//                         <img
+//                             src={product.thumb}
+//                             alt={product.name}
+//                             className="w-full h-full object-cover"
+//                         />
+//                     </button>
+//                 ))}
+//             </div>
+//         </div>
+//     );
+// };
+
+// export default Slideshow;
+
+// import React, { useState, useEffect } from "react";
+// import { motion, AnimatePresence } from "framer-motion";
+// import Images from "../assets/images"; // Use your image imports here
+
+// const products = [
+//     {
+//         id: 1,
+//         name: "LINAS CREW",
+//         desc: "minimalist. creative. flexible",
+//         price: "$183.76",
+//         sku: "su1",
+//         image: Images.Slide1,
+//         thumb: Images.Slide1,
+//     },
+//     {
+//         id: 2,
+//         name: "UNA CHAIR",
+//         desc: "modern. stylish. elegant",
+//         price: "$210.50",
+//         sku: "su2",
+//         image: Images.Slide2,
+//         thumb: Images.Slide2,
+//     },
+//     {
+//         id: 3,
+//         name: "ZEN CLOCK",
+//         desc: "calm. focused. timeless",
+//         price: "$159.90",
+//         sku: "su3",
+//         image: Images.Slide3,
+//         thumb: Images.Slide3,
+//     },
+// ];
+
+// const AurosSlideshow = () => {
+//     const [activeIndex, setActiveIndex] = useState(0);
+
+//     // Auto slide every 5 seconds
+//     useEffect(() => {
+//         const interval = setInterval(() => {
+//             setActiveIndex((prev) => (prev + 1) % products.length);
+//         }, 5000);
+//         return () => clearInterval(interval);
+//     }, []);
+
+//     const activeProduct = products[activeIndex];
+
+//     return (
+//         <div className="min-h-screen bg-[#c7e4e4] flex items-center relative overflow-x-hidden">
+//             {/* Left Content */}
+//             <div className="w-full md:w-1/2 px-8 md:px-16 flex flex-col justify-center z-10">
+//                 <h1 className="text-5xl md:text-7xl font-black uppercase leading-tight mb-6 tracking-tight">
+//                     {activeProduct.name.split(" ")[0]}
+//                     <br className="hidden md:block" />
+//                     {activeProduct.name.split(" ")[1]}
+//                 </h1>
+//                 <p className="text-lg text-gray-700 mb-8 font-medium">{activeProduct.desc}</p>
+//                 <button className="w-fit bg-[#f68c2c] text-white px-9 py-3 rounded font-semibold shadow hover:bg-[#db7903] transition mb-14">
+//                     Discover Now
+//                 </button>
+//             </div>
+
+//             {/* Main Image Section */}
+//             <div className="flex-1 flex justify-center items-center relative">
+//                 {/* White Blob Background */}
+//                 <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[650px] h-[475px] bg-white rounded-[38%_55%_62%_40%/58%_51%_70%_55%] shadow-md -z-10"></div>
+
+//                 {/* Product Image */}
+//                 <div className="relative w-[510px] h-[430px] flex justify-center items-center">
+//                     <AnimatePresence mode="wait">
+//                         <motion.img
+//                             key={activeProduct.id}
+//                             src={activeProduct.image}
+//                             alt={activeProduct.name}
+//                             initial={{ opacity: 0, scale: 0.9, y: 20 }}
+//                             animate={{ opacity: 1, scale: 1, y: 0 }}
+//                             exit={{ opacity: 0, scale: 1.1, y: -20 }}
+//                             transition={{ duration: 0.55, ease: "easeInOut" }}
+//                             className="w-full h-full object-contain select-none cursor-default"
+//                             draggable={false}
+//                             style={{ borderRadius: "28% 44% 42% 56%/44% 36% 58% 38%" }}
+//                         />
+//                     </AnimatePresence>
+
+//                     {/* Price Label bottom-right */}
+//                     <div className="absolute bottom-6 right-10 text-right">
+//                         <div className="text-xs text-gray-500 tracking-widest uppercase font-semibold mb-1">
+//                             Price
+//                         </div>
+//                         <div className="text-2xl font-bold">{activeProduct.price}</div>
+//                     </div>
+
+//                     {/* Right Side Floating Card */}
+//                     <div className="absolute right-[-55px] top-12 flex flex-col items-end z-30">
+//                         {/* Active product card */}
+//                         <div className="relative bg-white shadow-xl rounded-[52px] flex items-center px-9 py-3 min-w-[250px]">
+//                             {/* Circular thumb with ring */}
+//                             <img
+//                                 src={activeProduct.thumb}
+//                                 alt={activeProduct.name}
+//                                 className="w-16 h-16 rounded-full object-cover ring-4 ring-white absolute -left-10 top-1/2 -translate-y-1/2 shadow-md"
+//                             />
+//                             <div className="ml-16">
+//                                 <div className="font-bold text-lg text-gray-900">{activeProduct.name}</div>
+//                                 <div className="text-gray-400 text-xs font-mono mt-1">#SKU: {activeProduct.sku}</div>
+//                             </div>
+//                         </div>
+
+//                         {/* Vertical thumbnails */}
+//                         <div className="flex flex-col gap-6 mt-7 items-end">
+//                             {products.map(
+//                                 (product, idx) =>
+//                                     idx !== activeIndex && (
+//                                         <button
+//                                             key={product.id}
+//                                             onClick={() => setActiveIndex(idx)}
+//                                             className="bg-white/90 hover:bg-white rounded-full shadow-md w-16 h-16 flex items-center justify-center transition duration-300"
+//                                         >
+//                                             <img
+//                                                 src={product.thumb}
+//                                                 alt={product.name}
+//                                                 className="w-10 h-10 rounded-full object-cover opacity-60"
+//                                                 style={{ filter: "blur(1.5px)" }}
+//                                             />
+//                                         </button>
+//                                     )
+//                             )}
+//                         </div>
+//                     </div>
+//                 </div>
+//             </div>
+//         </div>
+//     );
+// };
+
+// export default AurosSlideshow;
+
+
+// import React, { useState, useEffect } from "react";
+// import { motion, AnimatePresence } from "framer-motion";
+// import Images from "../assets/images"; // your image imports
+
+// const products = [
+//     {
+//         id: 1,
+//         name: "LINAS CREW",
+//         desc: "minimalist. creative. flexible",
+//         price: "$183.76",
+//         sku: "su1",
+//         image: Images.Slide1,
+//         thumb: Images.Slide1,
+//     },
+//     {
+//         id: 2,
+//         name: "UNA CHAIR",
+//         desc: "modern. stylish. elegant",
+//         price: "$210.50",
+//         sku: "su2",
+//         image: Images.Slide2,
+//         thumb: Images.Slide2,
+//     },
+//     {
+//         id: 3,
+//         name: "ZEN CLOCK",
+//         desc: "calm. focused. timeless",
+//         price: "$159.90",
+//         sku: "su3",
+//         image: Images.Slide3,
+//         thumb: Images.Slide3,
+//     },
+// ];
+
+// const AurosSlideshow = () => {
+//     const [activeIndex, setActiveIndex] = useState(0);
+
+//     // Auto slide every 5s
+//     useEffect(() => {
+//         const interval = setInterval(() => {
+//             setActiveIndex((prev) => (prev + 1) % products.length);
+//         }, 5000);
+//         return () => clearInterval(interval);
+//     }, []);
+
+//     const activeProduct = products[activeIndex];
+
+//     return (
+//         <div className="min-h-screen flex items-center justify-between bg-[#c7e4e4] px-8 md:px-16 relative overflow-hidden">
+//             {/* Left Content */}
+//             <div className="flex-1 flex flex-col justify-center max-w-lg z-10">
+//                 <h1 className="text-5xl md:text-6xl font-black uppercase leading-tight mb-4 tracking-tight text-gray-900">
+//                     {activeProduct.name.split(" ")[0]}{" "}
+//                     <br />
+//                     {activeProduct.name.split(" ")[1]}
+//                 </h1>
+//                 <p className="text-lg text-gray-700 mb-8 font-medium">
+//                     {activeProduct.desc}
+//                 </p>
+//                 <button className="bg-[#e05b1c] text-white px-8 py-3 rounded font-semibold shadow hover:bg-[#d14c0f] transition">
+//                     Discover Now
+//                 </button>
+//             </div>
+
+//             {/* Right Content */}
+//             <div className="flex-1 flex justify-center items-center relative">
+//                 {/* White blob background */}
+//                 <div className="absolute w-[600px] h-[480px] bg-white rounded-[40%_60%_60%_40%/55%_45%_70%_50%] -z-10"></div>
+
+//                 {/* Product Image */}
+//                 <div className="relative w-[450px] h-[420px] flex justify-center items-center">
+//                     <AnimatePresence mode="wait">
+//                         <motion.img
+//                             key={activeProduct.id}
+//                             src={activeProduct.image}
+//                             alt={activeProduct.name}
+//                             initial={{ opacity: 0, y: 20 }}
+//                             animate={{ opacity: 1, y: 0 }}
+//                             exit={{ opacity: 0, y: -20 }}
+//                             transition={{ duration: 0.6, ease: "easeInOut" }}
+//                             className="w-full h-full object-contain select-none"
+//                             draggable={false}
+//                         />
+//                     </AnimatePresence>
+
+//                     {/* Price */}
+//                     <div className="absolute bottom-6 right-8 text-right">
+//                         <div className="uppercase text-[11px] text-gray-500 tracking-widest mb-1">
+//                             Price
+//                         </div>
+//                         <div className="text-2xl font-bold text-gray-900">
+//                             {activeProduct.price}
+//                         </div>
+//                     </div>
+
+//                     {/* Right floating card + thumbnails */}
+//                     <div className="absolute right-[-80px] top-16 flex flex-col items-end gap-6">
+//                         {/* Active Card */}
+//                         <div className="bg-white shadow-md rounded-full flex items-center px-6 py-2 min-w-[230px] relative">
+//                             <img
+//                                 src={activeProduct.thumb}
+//                                 alt={activeProduct.name}
+//                                 className="w-14 h-14 rounded-full object-cover ring-2 ring-white absolute -left-7 top-1/2 -translate-y-1/2"
+//                             />
+//                             <div className="ml-10">
+//                                 <div className="font-bold text-gray-900 text-sm">
+//                                     {activeProduct.name}
+//                                 </div>
+//                                 <div className="text-gray-400 text-xs font-mono">
+//                                     #SKU: {activeProduct.sku}
+//                                 </div>
+//                             </div>
+//                         </div>
+
+//                         {/* Thumbnails */}
+//                         {products.map(
+//                             (product, idx) =>
+//                                 idx !== activeIndex && (
+//                                     <button
+//                                         key={product.id}
+//                                         onClick={() => setActiveIndex(idx)}
+//                                         className="w-16 h-16 rounded-full bg-white flex items-center justify-center shadow-md hover:opacity-100 transition"
+//                                     >
+//                                         <img
+//                                             src={product.thumb}
+//                                             alt={product.name}
+//                                             className="w-10 h-10 rounded-full object-cover opacity-50 hover:opacity-100 transition"
+//                                         />
+//                                     </button>
+//                                 )
+//                         )}
+//                     </div>
+//                 </div>
+//             </div>
+//         </div>
+//     );
+// };
+
+// export default AurosSlideshow;
+
+
+
+
+
+// import React, { useState } from 'react';
+// import { motion, AnimatePresence } from "framer-motion";
+// import Images from '../assets/images';
+
+// const products = [
+//     {
+//         id: 1,
+//         name: "UNA CHAIR",
+//         desc: "minimalist. creative. flexible",
+//         price: "$102.84",
+//         sku: "B02",
+//         image: Images.Slide1,
+//         thumb: Images.Slide1,
+//     },
+//     {
+//         id: 2,
+//         name: "TEAPOT",
+//         desc: "modern. stylish. elegant",
+//         price: "$120.05",
+//         sku: "B03",
+//         image: Images.Slide2,
+//         thumb: Images.Slide2,
+//     },
+//     {
+//         id: 3,
+//         name: "LINAS CREW",
+//         desc: "calm. focused. timeless",
+//         price: "$183.76",
+//         sku: "B04",
+//         image: Images.Slide3,
+//         thumb: Images.Slide3,
+//     },
+// ];
+
+// const Slideshow = () => {
+//     const [activeIndex, setActiveIndex] = useState(0);
+//     const activeProduct = products[activeIndex];
+
+//     return (
+//         <div className="w-full min-h-screen flex items-center justify-center p-6 bg-white font-sans">
+//             <div className="w-full max-w-7xl flex flex-col lg:flex-row items-center justify-center relative">
+
+//                 {/* LEFT CONTENT */}
+//                 <div className="flex-1 text-center lg:text-left space-y-6 z-10 p-4 lg:p-0">
+//                     <AnimatePresence mode="wait">
+//                         <motion.div
+//                             key={activeProduct.id}
+//                             initial={{ opacity: 0, y: 50 }}
+//                             animate={{ opacity: 1, y: 0 }}
+//                             exit={{ opacity: 0, y: -50 }}
+//                             transition={{ duration: 0.6 }}
+//                         >
+//                             <h1 className="text-4xl md:text-6xl font-extrabold text-gray-800 leading-tight">
+//                                 {activeProduct.name}
+//                             </h1>
+//                             <p className="text-lg md:text-xl text-gray-600 mb-6">
+//                                 {activeProduct.desc}
+//                             </p>
+//                             <button className="bg-black text-white font-bold py-3 px-8 rounded-full shadow-lg hover:bg-gray-800 transition-colors duration-300">
+//                                 Discover Now
+//                             </button>
+//                         </motion.div>
+//                     </AnimatePresence>
+//                 </div>
+
+//                 {/* RIGHT CONTENT - Main Product Image */}
+//                 <div className="flex-1 relative flex items-center justify-center mt-12 lg:mt-0 p-4">
+//                     {/* Main Product Image (Placeholder) */}
+//                     <div className="relative w-80 h-80 md:w-[460px] md:h-[460px] rounded-full bg-gray-200 flex items-center justify-center overflow-hidden">
+//                         <AnimatePresence mode="wait">
+//                             <motion.img
+//                                 key={activeProduct.id}
+//                                 src={activeProduct.image}
+//                                 alt={activeProduct.name}
+//                                 initial={{ opacity: 0, scale: 0.8 }}
+//                                 animate={{ opacity: 1, scale: 1 }}
+//                                 exit={{ opacity: 0, scale: 0.8 }}
+//                                 transition={{ duration: 0.8, ease: "easeInOut" }}
+//                                 className="w-4/5 object-contain"
+//                             />
+//                         </AnimatePresence>
+//                     </div>
+
+//                     {/* PRICE CARD */}
+//                     <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 p-4 text-center">
+//                         <AnimatePresence>
+//                             <motion.div
+//                                 key={activeProduct.id}
+//                                 initial={{ opacity: 0, y: 20 }}
+//                                 animate={{ opacity: 1, y: 0 }}
+//                                 exit={{ opacity: 0, y: -20 }}
+//                                 transition={{ duration: 0.5 }}
+//                             >
+//                                 <p className="text-4xl font-extrabold text-gray-800">{activeProduct.price}</p>
+//                             </motion.div>
+//                         </AnimatePresence>
+//                     </div>
+
+//                     {/* THUMBNAILS - Side Navigation in a circle */}
+//                     <div className="absolute right-0 top-1/2 transform -translate-y-1/2 flex flex-col gap-6">
+//                         {products.map((product, index) => (
+//                             <button
+//                                 key={product.id}
+//                                 onClick={() => setActiveIndex(index)}
+//                                 className={`w-16 h-16 rounded-full overflow-hidden border-2 transition-all duration-300 ${index === activeIndex
+//                                     ? "border-black scale-110"
+//                                     : "border-transparent opacity-50 hover:opacity-80"
+//                                     }`}
+//                             >
+//                                 <img
+//                                     src={product.thumb}
+//                                     alt={product.name}
+//                                     className="w-full h-full object-cover"
+//                                 />
+//                             </button>
+//                         ))}
+//                     </div>
+//                 </div>
+//             </div>
+//         </div>
+//     );
+// };
+
+// export default Slideshow;
+
+
+// import React, { useState, useEffect } from 'react';
+// import { motion, AnimatePresence } from "framer-motion";
+// import Images from '../assets/images';
+
+// const products = [
+//     {
+//         id: 1,
+//         name: "UNA CHAIR",
+//         desc: "minimalist. creative. flexible",
+//         price: "$102.84",
+//         sku: "B02",
+//         image: Images.Slide1,
+//         thumb: Images.Slide1,
+//     },
+//     {
+//         id: 2,
+//         name: "TEAPOT",
+//         desc: "modern. stylish. elegant",
+//         price: "$120.05",
+//         sku: "B03",
+//         image: Images.Slide2,
+//         thumb: Images.Slide2,
+//     },
+//     {
+//         id: 3,
+//         name: "LINAS CREW",
+//         desc: "calm. focused. timeless",
+//         price: "$183.76",
+//         sku: "B04",
+//         image: Images.Slide3,
+//         thumb: Images.Slide3,
+//     },
+// ];
+
+// const Slideshow = () => {
+//     const [activeIndex, setActiveIndex] = useState(0);
+//     const activeProduct = products[activeIndex];
+
+//     return (
+//         <div className="w-full min-h-screen flex items-center justify-center p-6 bg-gray-100 font-sans relative">
+
+//             {/* Main Content Area */}
+//             <div className="w-full max-w-7xl flex flex-col lg:flex-row items-center justify-between relative z-10">
+
+//                 {/* LEFT CONTENT */}
+//                 <div className="flex-1 text-center lg:text-left space-y-6 p-4 lg:p-0">
+//                     <AnimatePresence mode="wait">
+//                         <motion.div
+//                             key={activeProduct.id}
+//                             initial={{ opacity: 0, y: 50 }}
+//                             animate={{ opacity: 1, y: 0 }}
+//                             exit={{ opacity: 0, y: -50 }}
+//                             transition={{ duration: 0.6 }}
+//                         >
+//                             <h1 className="text-4xl md:text-6xl font-extrabold text-gray-800 leading-tight">
+//                                 {activeProduct.name}
+//                             </h1>
+//                             <p className="text-lg md:text-xl text-gray-600 mb-6">
+//                                 {activeProduct.desc}
+//                             </p>
+//                             <button className="bg-black text-white font-bold py-3 px-8 rounded-full shadow-lg hover:bg-gray-800 transition-colors duration-300">
+//                                 Discover Now
+//                             </button>
+//                         </motion.div>
+//                     </AnimatePresence>
+//                 </div>
+
+//                 {/* RIGHT CONTENT - Main Product Image & Price */}
+//                 <div className="flex-1 relative flex items-center justify-center mt-12 lg:mt-0 p-4">
+//                     {/* WHITE ROUND BACKGROUND */}
+//                     <div className="relative w-80 h-80 md:w-[460px] md:h-[460px] rounded-full bg-white shadow-xl flex items-center justify-center overflow-hidden">
+//                         <AnimatePresence mode="wait">
+//                             <motion.img
+//                                 key={activeProduct.id}
+//                                 src={activeProduct.image}
+//                                 alt={activeProduct.name}
+//                                 initial={{ opacity: 0, scale: 0.8 }}
+//                                 animate={{ opacity: 1, scale: 1 }}
+//                                 exit={{ opacity: 0, scale: 0.8 }}
+//                                 transition={{ duration: 0.8, ease: "easeInOut" }}
+//                                 className="w-4/5 object-contain"
+//                             />
+//                         </AnimatePresence>
+//                     </div>
+
+//                     {/* PRICE CARD */}
+//                     <AnimatePresence>
+//                         <motion.div
+//                             key={activeProduct.id}
+//                             initial={{ opacity: 0, y: 20 }}
+//                             animate={{ opacity: 1, y: 0 }}
+//                             exit={{ opacity: 0, y: -20 }}
+//                             transition={{ duration: 0.5 }}
+//                             className="absolute bottom-4 left-1/2 transform -translate-x-1/2 p-4 text-center"
+//                         >
+//                             <p className="text-4xl font-extrabold text-gray-800">{activeProduct.price}</p>
+//                         </motion.div>
+//                     </AnimatePresence>
+//                 </div>
+//             </div>
+
+//             {/* THUMBNAILS - Right Side Vertical Sidebar */}
+//             <div className="hidden md:flex flex-col items-center justify-center space-y-4 absolute right-6 top-1/2 transform -translate-y-1/2 z-20 bg-gray-100 p-4 rounded-lg shadow-lg">
+//                 {products.map((product, index) => (
+//                     <button
+//                         key={product.id}
+//                         onClick={() => setActiveIndex(index)}
+//                         className={`relative w-24 h-24 rounded-full overflow-hidden border-2 transition-all duration-300 ${index === activeIndex
+//                             ? "border-green-500 opacity-100 scale-110"
+//                             : "border-transparent opacity-50 hover:opacity-80"
+//                             }`}
+//                     >
+//                         <img
+//                             src={product.thumb}
+//                             alt={product.name}
+//                             className="w-full h-full object-cover"
+//                         />
+//                         <div className="absolute inset-0 bg-gray-500 opacity-0 hover:opacity-20 transition-opacity duration-300"></div>
+//                         <div className="absolute bottom-1 right-1 bg-white rounded-full p-1 text-xs font-bold shadow-md">
+//                             <span className="text-gray-800">{product.name}</span>
+//                         </div>
+//                     </button>
+//                 ))}
+//             </div>
+//         </div>
+//     );
+// };
+
+// export default Slideshow;
+
+// import React, { useState, useEffect } from 'react';
+// import { motion, AnimatePresence } from "framer-motion";
+// import Images from '../assets/images';
+
+// const products = [
+//     {
+//         id: 1,
+//         name: "UNA CHAIR",
+//         desc: "minimalist. creative. flexible",
+//         price: "$102.84",
+//         sku: "B02",
+//         image: Images.Slide1,
+//         thumb: Images.Slide1,
+//     },
+//     {
+//         id: 2,
+//         name: "TEAPOT",
+//         desc: "modern. stylish. elegant",
+//         price: "$120.05",
+//         sku: "B03",
+//         image: Images.Slide2,
+//         thumb: Images.Slide2,
+//     },
+//     {
+//         id: 3,
+//         name: "LINAS CREW",
+//         desc: "calm. focused. timeless",
+//         price: "$183.76",
+//         sku: "B04",
+//         image: Images.Slide3,
+//         thumb: Images.Slide3,
+//     },
+// ];
+
+// const Slideshow = () => {
+//     const [activeIndex, setActiveIndex] = useState(0);
+//     const activeProduct = products[activeIndex];
+
+//     return (
+//         <div className="w-full min-h-screen flex items-center justify-center p-6 bg-gray-100 font-sans relative overflow-hidden">
+
+//             {/* Main Content Area */}
+//             <div className="w-full max-w-7xl flex flex-col lg:flex-row items-center justify-between relative z-10">
+
+//                 {/* LEFT CONTENT */}
+//                 <div className="flex-1 text-center lg:text-left space-y-6 p-4 lg:p-0">
+//                     <AnimatePresence mode="wait">
+//                         <motion.div
+//                             key={activeProduct.id}
+//                             initial={{ opacity: 0, y: 50 }}
+//                             animate={{ opacity: 1, y: 0 }}
+//                             exit={{ opacity: 0, y: -50 }}
+//                             transition={{ duration: 0.6 }}
+//                         >
+//                             <h1 className="text-4xl md:text-6xl font-extrabold text-gray-800 leading-tight">
+//                                 {activeProduct.name}
+//                             </h1>
+//                             <p className="text-lg md:text-xl text-gray-600 mb-6">
+//                                 {activeProduct.desc}
+//                             </p>
+//                             <button className="bg-black text-white font-bold py-3 px-8 rounded-full shadow-lg hover:bg-gray-800 transition-colors duration-300">
+//                                 Discover Now
+//                             </button>
+//                         </motion.div>
+//                     </AnimatePresence>
+//                 </div>
+
+//                 {/* RIGHT CONTENT - Main Product Image & Price */}
+//                 <div className="flex-1 relative flex items-center justify-center mt-12 lg:mt-0 p-4">
+//                     {/* WHITE ROUND BACKGROUND */}
+//                     <div className="relative w-80 h-80 md:w-[460px] md:h-[460px] rounded-full bg-white shadow-xl flex items-center justify-center overflow-hidden">
+//                         <AnimatePresence mode="wait">
+//                             <motion.img
+//                                 key={activeProduct.id}
+//                                 src={activeProduct.image}
+//                                 alt={activeProduct.name}
+//                                 initial={{ opacity: 0, scale: 0.8 }}
+//                                 animate={{ opacity: 1, scale: 1 }}
+//                                 exit={{ opacity: 0, scale: 0.8 }}
+//                                 transition={{ duration: 0.8, ease: "easeInOut" }}
+//                                 className="w-4/5 object-contain"
+//                             />
+//                         </AnimatePresence>
+//                     </div>
+
+//                     {/* PRICE CARD */}
+//                     <AnimatePresence>
+//                         <motion.div
+//                             key={activeProduct.id}
+//                             initial={{ opacity: 0, y: 20 }}
+//                             animate={{ opacity: 1, y: 0 }}
+//                             exit={{ opacity: 0, y: -20 }}
+//                             transition={{ duration: 0.5 }}
+//                             className="absolute bottom-4 left-1/2 transform -translate-x-1/2 p-4 text-center"
+//                         >
+//                             <p className="text-4xl font-extrabold text-gray-800">{activeProduct.price}</p>
+//                         </motion.div>
+//                     </AnimatePresence>
+//                 </div>
+//             </div>
+
+//             {/* THUMBNAILS - Right Side Vertical Sidebar with Details */}
+//             {/* <div className="hidden md:block absolute right-0 top-1/2 transform -translate-y-1/2 z-20 bg-white p-4 rounded-l-lg shadow-lg">
+//                 <ul className="space-y-4">
+//                     {products.map((product, index) => (
+//                         <li key={product.id}>
+//                             <button
+//                                 onClick={() => setActiveIndex(index)}
+//                                 className={`flex items-center space-x-4 p-2 rounded-lg transition-all duration-300 ${index === activeIndex
+//                                     ? "bg-gray-100 border-l-4 border-black"
+//                                     : "hover:bg-gray-50"
+//                                     }`}
+//                             >
+//                                 <div className="w-16 h-16 rounded-full overflow-hidden border-2 border-transparent">
+//                                     <img
+//                                         src={product.thumb}
+//                                         alt={product.name}
+//                                         className="w-full h-full object-cover"
+//                                     />
+//                                 </div>
+//                                 <div className="text-left">
+//                                     <p className="text-sm font-semibold text-gray-800">{product.name}</p>
+//                                     <p className="text-xs text-gray-500 mt-1">#{product.sku}</p>
+//                                 </div>
+//                             </button>
+//                         </li>
+//                     ))}
+//                 </ul>
+//             </div> */}
+//             <div className="hidden md:block absolute right-0 top-1/2 transform -translate-y-1/2 z-20">
+//                 <ul className="flex flex-col items-end space-y-6">
+//                     {products.map((product, index) => (
+//                         <li key={product.id}>
+//                             <button onClick={() => setActiveIndex(index)}>
+//                                 {index === activeIndex ? (
+//                                     // Active Product (big card)
+//                                     <div className="flex items-center bg-white p-4 rounded-m-6xl shadow-lg space-x-4">
+//                                         <div className="w-20 h-20 rounded-full overflow-hidden">
+//                                             <img
+//                                                 src={product.thumb}
+//                                                 alt={product.name}
+//                                                 className="w-full h-full object-cover"
+//                                             />
+//                                         </div>
+//                                         <div className="text-left">
+//                                             <p className="text-base font-bold text-gray-800">{product.name}</p>
+//                                             <p className="text-xs text-gray-500">#{product.sku}</p>
+//                                         </div>
+//                                     </div>
+//                                 ) : (
+//                                     // Inactive Products (small circles)
+//                                     <div className="w-20 h-20 bg-white rounded-full flex items-center justify-center shadow-md opacity-80 hover:opacity-100 transition">
+//                                         <img
+//                                             src={product.thumb}
+//                                             alt={product.name}
+//                                             className="w-12 h-12 object-cover"
+//                                         />
+//                                     </div>
+//                                 )}
+//                             </button>
+//                         </li>
+//                     ))}
+//                 </ul>
+//             </div>
+
+//         </div>
+//     );
+// };
+
+// export default Slideshow;
+
+import React, { useState, useEffect } from 'react';
+import { motion, AnimatePresence } from "framer-motion";
+import Images from '../assets/images';
+
+const products = [
+    {
+        id: 1,
+        name: "UNA CHAIR",
+        desc: "minimalist. creative. flexible",
+        price: "$102.84",
+        sku: "B02",
+        image: Images.Slide1,
+        thumb: Images.Slide1,
+    },
+    {
+        id: 2,
+        name: "TEAPOT",
+        desc: "modern. stylish. elegant",
+        price: "$120.05",
+        sku: "B03",
+        image: Images.Slide2,
+        thumb: Images.Slide2,
+    },
+    {
+        id: 3,
+        name: "LINAS CREW",
+        desc: "calm. focused. timeless",
+        price: "$183.76",
+        sku: "B04",
+        image: Images.Slide3,
+        thumb: Images.Slide3,
+    },
+];
 
 const Slideshow = () => {
+    const [activeIndex, setActiveIndex] = useState(0);
+    const activeProduct = products[activeIndex];
+
+    // 🔄 Auto slideshow
+    useEffect(() => {
+        const interval = setInterval(() => {
+            setActiveIndex((prevIndex) =>
+                prevIndex === products.length - 1 ? 0 : prevIndex + 1
+            );
+        }, 4000); // 4 seconds
+        return () => clearInterval(interval);
+    }, []);
+
     return (
-        <div className="min-h-screen bg-[#d0eceb] flex flex-col">
-            {/* Navbar */}
-            <nav className="flex justify-between items-center px-6 md:px-12 py-4">
-                {/* Logo */}
-                <div className="text-xl font-bold tracking-wide">AUROS.</div>
+        <div className="w-full min-h-screen flex items-center justify-center p-6 bg-gray-100 font-sans relative overflow-hidden">
 
-                {/* Menu */}
-                <div className="flex items-center gap-2 cursor-pointer">
-                    <Menu size={20} />
-                    <span className="text-sm uppercase">menu</span>
+            {/* Main Content Area */}
+            <div className="w-full max-w-7xl flex flex-col lg:flex-row items-center justify-between relative z-10">
+
+                {/* LEFT CONTENT */}
+                <div className="flex-1 text-center lg:text-left space-y-6 p-4 lg:p-0">
+                    <AnimatePresence mode="wait">
+                        <motion.div
+                            key={activeProduct.id}
+                            initial={{ opacity: 0, y: 50 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            exit={{ opacity: 0, y: -50 }}
+                            transition={{ duration: 0.6 }}
+                        >
+                            <h1 className="text-4xl md:text-6xl font-extrabold text-gray-800 leading-tight">
+                                {activeProduct.name}
+                            </h1>
+                            <p className="text-lg md:text-xl text-gray-600 mb-6">
+                                {activeProduct.desc}
+                            </p>
+                            <button className="bg-black text-white font-bold py-3 px-8 rounded-full shadow-lg hover:bg-gray-800 transition-colors duration-300">
+                                Discover Now
+                            </button>
+                        </motion.div>
+                    </AnimatePresence>
                 </div>
 
-                {/* Right Icons */}
-                <div className="flex items-center gap-4">
-                    <Search className="cursor-pointer" size={20} />
-                    <User className="cursor-pointer" size={20} />
-                    <div className="relative cursor-pointer">
-                        <ShoppingCart size={20} />
-                        <span className="absolute -top-2 -right-2 bg-orange-500 text-white text-xs rounded-full px-1">
-                            0
-                        </span>
-                    </div>
-                </div>
-            </nav>
-
-            {/* Main Section */}
-            <div className="flex flex-col md:flex-row flex-1 items-center justify-center px-6 md:px-16 lg:px-24 gap-8">
-                {/* Left Column */}
-                <div className="flex flex-col justify-center items-start text-left md:w-1/2 space-y-4">
-                    <h1 className="text-4xl md:text-6xl font-bold leading-tight">
-                        TEAPOT
-                    </h1>
-                    <p className="text-gray-700 text-lg md:text-xl">
-                        minimalist. creative. flexible
-                    </p>
-                    <button className="mt-4 px-6 py-3 bg-orange-500 text-white rounded-md hover:bg-orange-600 transition">
-                        Discover Now
-                    </button>
-                </div>
-
-                {/* Right Column */}
-                <div className="relative flex justify-center items-center md:w-1/2">
-                    {/* Circle Background */}
-                    <div className="absolute w-96 h-96 bg-white rounded-full shadow-xl" />
-
-                    {/* Main Product with floating animation */}
-                    <motion.img
-                        src="https://zuiver.s3.eu-central-1.amazonaws.com/clock-black.png" // replace with product image
-                        alt="Teapot"
-                        className="relative w-72 h-72 object-contain z-10"
-                        initial={{ y: 0 }}
-                        animate={{ y: [-10, 10, -10] }}
-                        transition={{ duration: 4, repeat: Infinity, delay: 3 }}
-                    />
-
-                    {/* Floating Thumbnail */}
-                    <div className="absolute right-0 md:right-12 bottom-4 bg-white shadow-md rounded-full p-4 flex items-center space-x-3 z-20">
-                        <img
-                            src="https://zuiver.s3.eu-central-1.amazonaws.com/clock-black.png"
-                            alt="Thumbnail"
-                            className="w-12 h-12 object-contain"
-                        />
-                        <div>
-                            <p className="font-semibold text-sm">TEAPOT</p>
-                            <p className="text-xs text-gray-500">#SKU: tp01</p>
-                        </div>
+                {/* RIGHT CONTENT - Main Product Image & Price */}
+                <div className="flex-1 relative flex flex-col items-center justify-center mt-12 lg:mt-0 p-4 space-y-6">
+                    {/* WHITE ROUND BACKGROUND */}
+                    <div className="relative w-80 h-80 md:w-[460px] md:h-[460px] rounded-full bg-white shadow-xl flex items-center justify-center overflow-hidden">
+                        <AnimatePresence mode="wait">
+                            <motion.img
+                                key={activeProduct.id}
+                                src={activeProduct.image}
+                                alt={activeProduct.name}
+                                initial={{ opacity: 0, scale: 0.8 }}
+                                animate={{ opacity: 1, scale: 1 }}
+                                exit={{ opacity: 0, scale: 0.8 }}
+                                transition={{ duration: 0.8, ease: "easeInOut" }}
+                                className="w-4/5 object-contain"
+                            />
+                        </AnimatePresence>
                     </div>
 
-                    {/* Price Tag */}
-                    <div className="absolute left-0 md:left-12 bottom-4 text-left z-20">
-                        <p className="uppercase text-xs tracking-widest text-gray-500">
-                            Price
-                        </p>
-                        <p className="text-xl md:text-2xl font-bold">$102.84</p>
-                    </div>
+                    {/* PRICE CARD */}
+                    <AnimatePresence>
+                        <motion.div
+                            key={activeProduct.id}
+                            initial={{ opacity: 0, y: 20 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            exit={{ opacity: 0, y: -20 }}
+                            transition={{ duration: 0.5 }}
+                            className="p-4 text-center"
+                        >
+                            <p className="text-4xl font-extrabold text-gray-800">{activeProduct.price}</p>
+                        </motion.div>
+                    </AnimatePresence>
                 </div>
+
             </div>
+
+            {/* THUMBNAILS - Right Side */}
+            <div className="hidden md:block absolute right-0 top-1/2 transform -translate-y-1/2 z-20">
+                <ul className="flex flex-col items-end space-y-6">
+                    {products.map((product, index) => (
+                        <li key={product.id}>
+                            <button onClick={() => setActiveIndex(index)}>
+                                {index === activeIndex ? (
+                                    // Active Product (capsule shape card)
+                                    <div className="flex items-center bg-white p-4 rounded-l-full shadow-lg space-x-4">
+                                        <div className="w-20 h-20 rounded-full overflow-hidden">
+                                            <img
+                                                src={product.thumb}
+                                                alt={product.name}
+                                                className="w-full h-full object-cover"
+                                            />
+                                        </div>
+                                        <div className="text-left">
+                                            <p className="text-base font-bold text-gray-800">{product.name}</p>
+                                            <p className="text-xs text-gray-500">#{product.sku}</p>
+                                        </div>
+                                    </div>
+                                ) : (
+                                    // Inactive Products (small circles)
+                                    <div className="w-20 h-20 bg-white rounded-full flex items-center justify-center shadow-md opacity-50 hover:opacity-100 transition">
+                                        <img
+                                            src={product.thumb}
+                                            alt={product.name}
+                                            className="w-12 h-12 object-cover"
+                                        />
+                                    </div>
+                                )}
+                            </button>
+                        </li>
+                    ))}
+                </ul>
+            </div>
+
+
         </div>
     );
 };
 
-export default Slideshow
+export default Slideshow;
+
+// import React, { useState, useEffect } from 'react';
+// import { motion, AnimatePresence } from "framer-motion";
+// import Images from '../assets/images';
+
+// const products = [
+//     {
+//         id: 1,
+//         name: "UNA CHAIR",
+//         desc: "minimalist. creative. flexible",
+//         price: "$102.84",
+//         sku: "B02",
+//         image: Images.Slide1,
+//         thumb: Images.Slide1,
+//     },
+//     {
+//         id: 2,
+//         name: "TEAPOT",
+//         desc: "modern. stylish. elegant",
+//         price: "$120.05",
+//         sku: "B03",
+//         image: Images.Slide2,
+//         thumb: Images.Slide2,
+//     },
+//     {
+//         id: 3,
+//         name: "LINAS CREW",
+//         desc: "calm. focused. timeless",
+//         price: "$183.76",
+//         sku: "B04",
+//         image: Images.Slide3,
+//         thumb: Images.Slide3,
+//     },
+// ];
+
+// const Slideshow = () => {
+//     const [activeIndex, setActiveIndex] = useState(0);
+//     const activeProduct = products[activeIndex];
+
+//     // 🔄 Auto slideshow
+//     useEffect(() => {
+//         const interval = setInterval(() => {
+//             setActiveIndex((prevIndex) =>
+//                 prevIndex === products.length - 1 ? 0 : prevIndex + 1
+//             );
+//         }, 4000); // 4 seconds
+//         return () => clearInterval(interval);
+//     }, []);
+
+//     const handleThumbnailClick = (index) => {
+//         setActiveIndex(index);
+//     };
+
+//     return (
+//         <div className="w-full min-h-screen flex items-center justify-center p-6 bg-gray-100 font-sans relative overflow-hidden">
+
+//             {/* Main Content Area */}
+//             <div className="w-full max-w-7xl flex flex-col lg:flex-row items-center justify-between relative z-10">
+
+//                 {/* LEFT CONTENT */}
+//                 <div className="flex-1 text-center lg:text-left space-y-6 p-4 lg:p-0">
+//                     <AnimatePresence mode="wait">
+//                         <motion.div
+//                             key={activeProduct.id}
+//                             initial={{ opacity: 0, y: 30 }}
+//                             animate={{ opacity: 1, y: 0 }}
+//                             exit={{ opacity: 0, y: -30 }}
+//                             transition={{ duration: 0.5, ease: "easeOut" }}
+//                         >
+//                             <h1 className="text-4xl md:text-6xl font-extrabold text-gray-800 leading-tight">
+//                                 {activeProduct.name}
+//                             </h1>
+//                             <p className="text-lg md:text-xl text-gray-600 mb-6">
+//                                 {activeProduct.desc}
+//                             </p>
+//                             <button className="bg-black text-white font-bold py-3 px-8 rounded-full shadow-lg hover:bg-gray-800 transition-colors duration-300">
+//                                 Discover Now
+//                             </button>
+//                         </motion.div>
+//                     </AnimatePresence>
+//                 </div>
+
+//                 {/* RIGHT CONTENT - Main Product Image & Price */}
+//                 <div className="flex-1 relative flex flex-col items-center justify-center mt-12 lg:mt-0 p-4 space-y-6">
+//                     {/* WHITE ROUND BACKGROUND */}
+//                     <div className="relative w-80 h-80 md:w-[460px] md:h-[460px] rounded-full bg-white shadow-xl flex items-center justify-center overflow-hidden">
+//                         <AnimatePresence mode="wait">
+//                             <motion.img
+//                                 key={activeProduct.id}
+//                                 src={activeProduct.image}
+//                                 alt={activeProduct.name}
+//                                 initial={{ opacity: 0, scale: 0.9 }}
+//                                 animate={{ opacity: 1, scale: 1 }}
+//                                 exit={{ opacity: 0, scale: 0.9 }}
+//                                 transition={{ duration: 0.7, ease: "easeInOut" }}
+//                                 className="w-4/5 object-contain"
+//                             />
+//                         </AnimatePresence>
+//                     </div>
+
+//                     {/* PRICE CARD */}
+//                     <AnimatePresence>
+//                         <motion.div
+//                             key={activeProduct.id}
+//                             initial={{ opacity: 0, y: 20 }}
+//                             animate={{ opacity: 1, y: 0 }}
+//                             exit={{ opacity: 0, y: -20 }}
+//                             transition={{ duration: 0.4 }}
+//                             className="p-4 text-center"
+//                         >
+//                             <p className="text-4xl font-extrabold text-gray-800">{activeProduct.price}</p>
+//                         </motion.div>
+//                     </AnimatePresence>
+//                 </div>
+//             </div>
+
+//             {/* THUMBNAILS - Right Side Vertical Sidebar with Details */}
+//             <div className="hidden md:block absolute right-0 top-1/2 transform -translate-y-1/2 z-20">
+//                 <ul className="flex flex-col items-end space-y-6">
+//                     {products.map((product, index) => (
+//                         <li key={product.id}>
+//                             <motion.button
+//                                 onClick={() => handleThumbnailClick(index)}
+//                                 initial={{ x: 50, opacity: 0 }}
+//                                 animate={{ x: 0, opacity: 1 }}
+//                                 transition={{ duration: 0.4, delay: index * 0.1 }}
+//                                 className={`flex items-center space-x-4 p-2 rounded-l-full transition-all duration-300 ${index === activeIndex ? "bg-white shadow-lg" : "hover:bg-gray-100"
+//                                     }`}
+//                             >
+//                                 <div className="w-16 h-16 rounded-full overflow-hidden border-2 border-transparent">
+//                                     <img
+//                                         src={product.thumb}
+//                                         alt={product.name}
+//                                         className="w-full h-full object-cover"
+//                                     />
+//                                 </div>
+//                                 <div className="text-left flex-col pr-4">
+//                                     <p className="text-sm font-semibold text-gray-800">{product.name}</p>
+//                                     <p className="text-xs text-gray-500 mt-1">#{product.sku}</p>
+//                                 </div>
+//                             </motion.button>
+//                         </li>
+//                     ))}
+//                 </ul>
+//             </div>
+//         </div>
+//     );
+// };
+
+// export default Slideshow;
+
 

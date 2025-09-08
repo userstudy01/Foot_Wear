@@ -7,15 +7,15 @@ import storage from "redux-persist/lib/storage";
 
 const loogerMiddleware = createLogger();
 const persistconfig = {
-    key : 'root',
-    version : 1,
-    storage : storage
+    key: 'root',
+    version: 1,
+    storage: storage
 };
 const persistedReducer = persistReducer(persistconfig, rootReducer);
 const composeEnhancer = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 const store = createStore(
     persistedReducer,
     composeEnhancer(applyMiddleware(thunkMiddleware, loogerMiddleware))
-  );
-  let persistor = persistStore(store);
-  export { store, persistor };
+);
+let persistor = persistStore(store);
+export { store, persistor };

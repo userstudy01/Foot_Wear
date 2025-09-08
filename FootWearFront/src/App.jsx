@@ -6,6 +6,7 @@ import Header from "./components/Header";
 import { ToastContainer } from "react-toastify";
 import NewsletterPopup from "./components/NewsletterPopup";
 import SignUp from "./components/Signup/SignUp";
+import Produc_tDetails from "./components/Produc_tDetails";
 
 function App() {
   return (
@@ -18,6 +19,9 @@ function App() {
         <Route path="/signup" element={<SignUp />} />
         {/* <Route path="/signup" element={<Signup />} /> */}
         <Route path="/newslatter" element={<NewsletterPopup />} />
+        {/* <Route path="/product/:id" element={<ProductDetails />} /> */}
+        <Route path="/product/:id" element={<Produc_tDetails />} />
+
       </Routes>
       <ToastContainer />
     </Router>

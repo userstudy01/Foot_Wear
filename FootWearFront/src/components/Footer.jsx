@@ -91,7 +91,7 @@ const Footer = () => {
 
             {/* Divider */}
             <div className="border-t border-gray-700 mt-10 pt-5 flex flex-col md:flex-row items-center justify-between text-sm text-gray-400">
-                <p>All Right Reserved © 2023 Designthemes</p>
+                <p>All Right Reserved © 2025 Designthemes</p>
                 <div className="flex space-x-3 mt-3 md:mt-0">
                     <img src="https://img.icons8.com/color/48/visa.png" alt="visa" className="h-6" />
                     <img src="https://img.icons8.com/color/48/mastercard.png" alt="mastercard" className="h-6" />
@@ -106,7 +106,20 @@ const Footer = () => {
                 onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
                 className="fixed bottom-6 right-6 bg-orange-500 p-4 rounded-full text-white shadow-lg hover:bg-orange-600 transition"
             >
-                ↑
+                <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    strokeWidth={2.5}
+                    stroke="currentColor"
+                    className="w-6 h-6"
+                >
+                    <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        d="M4.5 10.5 12 3m0 0 7.5 7.5M12 3v18"
+                    />
+                </svg>
             </button>
         </footer>
     );
