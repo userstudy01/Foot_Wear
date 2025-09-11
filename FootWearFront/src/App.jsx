@@ -1,6 +1,7 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import AuthForm from "./components/AuthForm";
 import HomePage from "./components/HomePage";
+import About from "./components/about";
 import Signin from "./components/Signin";
 import Header from "./components/Header";
 import { ToastContainer } from "react-toastify";
@@ -21,6 +22,7 @@ function App() {
         <Route path="/newslatter" element={<NewsletterPopup />} />
         {/* <Route path="/product/:id" element={<ProductDetails />} /> */}
         <Route path="/product/:id" element={<Produc_tDetails />} />
+        <Route path="/about" element={<About />} />
 
       </Routes>
       <ToastContainer />

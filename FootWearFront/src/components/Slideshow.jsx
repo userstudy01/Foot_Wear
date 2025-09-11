@@ -173,9 +173,6 @@
 
 // export default Slideshow;
 
-
-
-
 // import React, { useState, useEffect } from "react";
 // import { motion, AnimatePresence } from "framer-motion";
 
@@ -369,7 +366,6 @@
 //     const [activeIndex, setActiveIndex] = useState(0);
 //     const activeProduct = products[activeIndex];
 
-
 //     return (
 //         <div className="w-full max-w-7xl flex flex-col lg:flex-row items-center justify-between px-6 lg:px-12">
 
@@ -434,7 +430,6 @@
 // };
 
 // export default Slideshow
-
 
 // import React, { useState } from "react";
 // import { motion, AnimatePresence } from "framer-motion";
@@ -714,7 +709,6 @@
 
 // export default AurosSlideshow;
 
-
 // import React, { useState, useEffect } from "react";
 // import { motion, AnimatePresence } from "framer-motion";
 // import Images from "../assets/images"; // your image imports
@@ -855,10 +849,6 @@
 
 // export default AurosSlideshow;
 
-
-
-
-
 // import React, { useState } from 'react';
 // import { motion, AnimatePresence } from "framer-motion";
 // import Images from '../assets/images';
@@ -983,7 +973,6 @@
 // };
 
 // export default Slideshow;
-
 
 // import React, { useState, useEffect } from 'react';
 // import { motion, AnimatePresence } from "framer-motion";
@@ -1286,161 +1275,160 @@
 
 // export default Slideshow;
 
-import React, { useState, useEffect } from 'react';
-import { motion, AnimatePresence } from "framer-motion";
-import Images from '../assets/images';
+// import React, { useState, useEffect } from 'react';
+// import { motion, AnimatePresence } from "framer-motion";
+// import Images from '../assets/images';
 
-const products = [
-    {
-        id: 1,
-        name: "UNA CHAIR",
-        desc: "minimalist. creative. flexible",
-        price: "$102.84",
-        sku: "B02",
-        image: Images.Slide1,
-        thumb: Images.Slide1,
-    },
-    {
-        id: 2,
-        name: "TEAPOT",
-        desc: "modern. stylish. elegant",
-        price: "$120.05",
-        sku: "B03",
-        image: Images.Slide2,
-        thumb: Images.Slide2,
-    },
-    {
-        id: 3,
-        name: "LINAS CREW",
-        desc: "calm. focused. timeless",
-        price: "$183.76",
-        sku: "B04",
-        image: Images.Slide3,
-        thumb: Images.Slide3,
-    },
-];
+// const products = [
+//     {
+//         id: 1,
+//         name: "UNA CHAIR",
+//         desc: "minimalist. creative. flexible",
+//         price: "$102.84",
+//         sku: "B02",
+//         image: Images.Slide1,
+//         thumb: Images.Slide1,
+//     },
+//     {
+//         id: 2,
+//         name: "TEAPOT",
+//         desc: "modern. stylish. elegant",
+//         price: "$120.05",
+//         sku: "B03",
+//         image: Images.Slide2,
+//         thumb: Images.Slide2,
+//     },
+//     {
+//         id: 3,
+//         name: "LINAS CREW",
+//         desc: "calm. focused. timeless",
+//         price: "$183.76",
+//         sku: "B04",
+//         image: Images.Slide3,
+//         thumb: Images.Slide3,
+//     },
+// ];
 
-const Slideshow = () => {
-    const [activeIndex, setActiveIndex] = useState(0);
-    const activeProduct = products[activeIndex];
+// const Slideshow = () => {
+//     const [activeIndex, setActiveIndex] = useState(0);
+//     const activeProduct = products[activeIndex];
 
-    // 🔄 Auto slideshow
-    useEffect(() => {
-        const interval = setInterval(() => {
-            setActiveIndex((prevIndex) =>
-                prevIndex === products.length - 1 ? 0 : prevIndex + 1
-            );
-        }, 4000); // 4 seconds
-        return () => clearInterval(interval);
-    }, []);
+//     // 🔄 Auto slideshow
+//     useEffect(() => {
+//         const interval = setInterval(() => {
+//             setActiveIndex((prevIndex) =>
+//                 prevIndex === products.length - 1 ? 0 : prevIndex + 1
+//             );
+//         }, 4000); // 4 seconds
+//         return () => clearInterval(interval);
+//     }, []);
 
-    return (
-        <div className="w-full min-h-screen flex items-center justify-center p-6 bg-gray-100 font-sans relative overflow-hidden">
+//     return (
+//         <div className="w-full min-h-screen flex items-center justify-center p-6 bg-gray-100 font-sans relative overflow-hidden">
 
-            {/* Main Content Area */}
-            <div className="w-full max-w-7xl flex flex-col lg:flex-row items-center justify-between relative z-10">
+//             {/* Main Content Area */}
+//             <div className="w-full max-w-7xl flex flex-col lg:flex-row items-center justify-between relative z-10">
 
-                {/* LEFT CONTENT */}
-                <div className="flex-1 text-center lg:text-left space-y-6 p-4 lg:p-0">
-                    <AnimatePresence mode="wait">
-                        <motion.div
-                            key={activeProduct.id}
-                            initial={{ opacity: 0, y: 50 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            exit={{ opacity: 0, y: -50 }}
-                            transition={{ duration: 0.6 }}
-                        >
-                            <h1 className="text-4xl md:text-6xl font-extrabold text-gray-800 leading-tight">
-                                {activeProduct.name}
-                            </h1>
-                            <p className="text-lg md:text-xl text-gray-600 mb-6">
-                                {activeProduct.desc}
-                            </p>
-                            <button className="bg-black text-white font-bold py-3 px-8 rounded-full shadow-lg hover:bg-gray-800 transition-colors duration-300">
-                                Discover Now
-                            </button>
-                        </motion.div>
-                    </AnimatePresence>
-                </div>
+//                 {/* LEFT CONTENT */}
+//                 <div className="flex-1 text-center lg:text-left space-y-6 p-4 lg:p-0">
+//                     <AnimatePresence mode="wait">
+//                         <motion.div
+//                             key={activeProduct.id}
+//                             initial={{ opacity: 0, y: 50 }}
+//                             animate={{ opacity: 1, y: 0 }}
+//                             exit={{ opacity: 0, y: -50 }}
+//                             transition={{ duration: 0.6 }}
+//                         >
+//                             <h1 className="text-4xl md:text-6xl font-extrabold text-gray-800 leading-tight">
+//                                 {activeProduct.name}
+//                             </h1>
+//                             <p className="text-lg md:text-xl text-gray-600 mb-6">
+//                                 {activeProduct.desc}
+//                             </p>
+//                             <button className="bg-black text-white font-bold py-3 px-8 rounded-full shadow-lg hover:bg-gray-800 transition-colors duration-300">
+//                                 Discover Now
+//                             </button>
+//                         </motion.div>
+//                     </AnimatePresence>
+//                 </div>
 
-                {/* RIGHT CONTENT - Main Product Image & Price */}
-                <div className="flex-1 relative flex flex-col items-center justify-center mt-12 lg:mt-0 p-4 space-y-6">
-                    {/* WHITE ROUND BACKGROUND */}
-                    <div className="relative w-80 h-80 md:w-[460px] md:h-[460px] rounded-full bg-white shadow-xl flex items-center justify-center overflow-hidden">
-                        <AnimatePresence mode="wait">
-                            <motion.img
-                                key={activeProduct.id}
-                                src={activeProduct.image}
-                                alt={activeProduct.name}
-                                initial={{ opacity: 0, scale: 0.8 }}
-                                animate={{ opacity: 1, scale: 1 }}
-                                exit={{ opacity: 0, scale: 0.8 }}
-                                transition={{ duration: 0.8, ease: "easeInOut" }}
-                                className="w-4/5 object-contain"
-                            />
-                        </AnimatePresence>
-                    </div>
+//                 {/* RIGHT CONTENT - Main Product Image & Price */}
+//                 <div className="flex-1 relative flex flex-col items-center justify-center mt-12 lg:mt-0 p-4 space-y-6">
+//                     {/* WHITE ROUND BACKGROUND */}
+//                     <div className="relative w-80 h-80 md:w-[460px] md:h-[460px] rounded-full bg-white shadow-xl flex items-center justify-center overflow-hidden">
+//                         <AnimatePresence mode="wait">
+//                             <motion.img
+//                                 key={activeProduct.id}
+//                                 src={activeProduct.image}
+//                                 alt={activeProduct.name}
+//                                 initial={{ opacity: 0, scale: 0.8 }}
+//                                 animate={{ opacity: 1, scale: 1 }}
+//                                 exit={{ opacity: 0, scale: 0.8 }}
+//                                 transition={{ duration: 0.8, ease: "easeInOut" }}
+//                                 className="w-4/5 object-contain"
+//                             />
+//                         </AnimatePresence>
+//                     </div>
 
-                    {/* PRICE CARD */}
-                    <AnimatePresence>
-                        <motion.div
-                            key={activeProduct.id}
-                            initial={{ opacity: 0, y: 20 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            exit={{ opacity: 0, y: -20 }}
-                            transition={{ duration: 0.5 }}
-                            className="p-4 text-center"
-                        >
-                            <p className="text-4xl font-extrabold text-gray-800">{activeProduct.price}</p>
-                        </motion.div>
-                    </AnimatePresence>
-                </div>
+//                     {/* PRICE CARD */}
+//                     <AnimatePresence>
+//                         <motion.div
+//                             key={activeProduct.id}
+//                             initial={{ opacity: 0, y: 20 }}
+//                             animate={{ opacity: 1, y: 0 }}
+//                             exit={{ opacity: 0, y: -20 }}
+//                             transition={{ duration: 0.5 }}
+//                             className="p-4 text-center"
+//                         >
+//                             <p className="text-4xl font-extrabold text-gray-800">{activeProduct.price}</p>
+//                         </motion.div>
+//                     </AnimatePresence>
+//                 </div>
 
-            </div>
+//             </div>
 
-            {/* THUMBNAILS - Right Side */}
-            <div className="hidden md:block absolute right-0 top-1/2 transform -translate-y-1/2 z-20">
-                <ul className="flex flex-col items-end space-y-6">
-                    {products.map((product, index) => (
-                        <li key={product.id}>
-                            <button onClick={() => setActiveIndex(index)}>
-                                {index === activeIndex ? (
-                                    // Active Product (capsule shape card)
-                                    <div className="flex items-center bg-white p-4 rounded-l-full shadow-lg space-x-4">
-                                        <div className="w-20 h-20 rounded-full overflow-hidden">
-                                            <img
-                                                src={product.thumb}
-                                                alt={product.name}
-                                                className="w-full h-full object-cover"
-                                            />
-                                        </div>
-                                        <div className="text-left">
-                                            <p className="text-base font-bold text-gray-800">{product.name}</p>
-                                            <p className="text-xs text-gray-500">#{product.sku}</p>
-                                        </div>
-                                    </div>
-                                ) : (
-                                    // Inactive Products (small circles)
-                                    <div className="w-20 h-20 bg-white rounded-full flex items-center justify-center shadow-md opacity-50 hover:opacity-100 transition">
-                                        <img
-                                            src={product.thumb}
-                                            alt={product.name}
-                                            className="w-12 h-12 object-cover"
-                                        />
-                                    </div>
-                                )}
-                            </button>
-                        </li>
-                    ))}
-                </ul>
-            </div>
+//             {/* THUMBNAILS - Right Side */}
+//             <div className="hidden md:block absolute right-0 top-1/2 transform -translate-y-1/2 z-20">
+//                 <ul className="flex flex-col items-end space-y-6">
+//                     {products.map((product, index) => (
+//                         <li key={product.id}>
+//                             <button onClick={() => setActiveIndex(index)}>
+//                                 {index === activeIndex ? (
+//                                     // Active Product (capsule shape card)
+//                                     <div className="flex items-center bg-white p-4 rounded-l-full shadow-lg space-x-4">
+//                                         <div className="w-20 h-20 rounded-full overflow-hidden">
+//                                             <img
+//                                                 src={product.thumb}
+//                                                 alt={product.name}
+//                                                 className="w-full h-full object-cover"
+//                                             />
+//                                         </div>
+//                                         <div className="text-left">
+//                                             <p className="text-base font-bold text-gray-800">{product.name}</p>
+//                                             <p className="text-xs text-gray-500">#{product.sku}</p>
+//                                         </div>
+//                                     </div>
+//                                 ) : (
+//                                     // Inactive Products (small circles)
+//                                     <div className="w-20 h-20 bg-white rounded-full flex items-center justify-center shadow-md opacity-50 hover:opacity-100 transition">
+//                                         <img
+//                                             src={product.thumb}
+//                                             alt={product.name}
+//                                             className="w-12 h-12 object-cover"
+//                                         />
+//                                     </div>
+//                                 )}
+//                             </button>
+//                         </li>
+//                     ))}
+//                 </ul>
+//             </div>
 
+//         </div>
+//     );
+// };
 
-        </div>
-    );
-};
-
-export default Slideshow;
+// export default Slideshow;
 
 // import React, { useState, useEffect } from 'react';
 // import { motion, AnimatePresence } from "framer-motion";
@@ -1592,4 +1580,222 @@ export default Slideshow;
 
 // export default Slideshow;
 
+import React, { useEffect, useMemo, useRef, useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import Images from "../assets/images";
 
+const SLIDE_DURATION = 4500;
+
+const products = [
+  {
+    id: 1,
+    name: "UNA CHAIR",
+    subtitle: "minimalist • creative • flexible",
+    desc: "Find a bright ideal to suit your taste with our great selection of suspension, wall & table designs.",
+    price: "$102.84",
+    sku: "B02",
+    image: Images.Slide2,
+    thumb: Images.Slide2,
+    cta: "Discover Now",
+  },
+  {
+    id: 2,
+    name: "TEAPOT",
+    subtitle: "modern • stylish • elegant",
+    desc: "Made for everyday rituals with timeless materials and calm proportions for your space.",
+    price: "$120.05",
+    sku: "B03",
+    image: Images.Logo,
+    thumb: Images.Logo,
+    cta: "Shop Collection",
+  },
+  {
+    id: 3,
+    name: "LINAS CREW",
+    subtitle: "calm • focused • timeless",
+    desc: "Understated silhouettes crafted to last. Elevate your room with warm neutrals.",
+    price: "$183.76",
+    sku: "B04",
+    image: Images.Logo1,
+    thumb: Images.Logo1,
+    cta: "Explore More",
+  },
+];
+
+const containerVariants = {
+  animate: {
+    transition: {
+      staggerChildren: 0.15,
+    },
+  },
+};
+
+const fadeUp = {
+  initial: { opacity: 0, y: 30 },
+  animate: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } },
+  exit: { opacity: 0, y: -30, transition: { duration: 0.4, ease: "easeIn" } },
+};
+
+const textVariants = {
+  initial: { opacity: 0, y: 40 },
+  animate: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } },
+  exit: { opacity: 0, y: -40, transition: { duration: 0.4, ease: "easeIn" } },
+};
+
+export default function Slideshow() {
+  const [active, setActive] = useState(0);
+  const timerRef = useRef(null);
+  const product = products[active];
+
+  // Auto-advance forever (no pause)
+  useEffect(() => {
+    timerRef.current && clearTimeout(timerRef.current);
+    timerRef.current = setTimeout(() => {
+      setActive((i) => (i === products.length - 1 ? 0 : i + 1));
+    }, SLIDE_DURATION);
+    return () => clearTimeout(timerRef.current);
+  }, [active]);
+
+  
+
+  const progressKey = useMemo(() => product.id + "-progress", [product.id]);
+
+  return (
+    <div className="relative w-full min-h-screen bg-gray-100 overflow-hidden font-sans">
+      {/* soft tints */}
+      <div className="pointer-events-none absolute -left-24 -top-24 w-[520px] h-[520px] rounded-full bg-amber-100/60 blur-2xl" />
+      <div className="pointer-events-none absolute right-[-140px] bottom-[-140px] w-[520px] h-[520px] rounded-full bg-emerald-100/50 blur-2xl" />
+
+      <div className="relative z-10 max-w-7xl mx-auto px-6 py-10 lg:py-16 grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
+        {/* LEFT :: Text (auto changes with slide) */}
+        <div className="order-2 lg:order-1">
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={product.id + "-text"}
+              variants={containerVariants}
+              initial="initial"
+              animate="animate"
+              exit="exit"
+              className="space-y-5"
+            >
+              <motion.div variants={fadeUp}>
+                <h1 className="text-4xl md:text-6xl font-extrabold">
+                  {product.name}
+                </h1>
+              </motion.div>
+              <motion.p variants={fadeUp}>{product.subtitle}</motion.p>
+              <motion.p variants={fadeUp}>{product.desc}</motion.p>
+            </motion.div>
+          </AnimatePresence>
+
+          {/* progress bar that restarts each slide */}
+          <div className="mt-6 h-1 w-56 bg-gray-200/70 rounded-full overflow-hidden">
+            <motion.div
+              key={progressKey}
+              initial={{ width: 0 }}
+              animate={{ width: "100%" }}
+              transition={{ duration: SLIDE_DURATION / 1000, ease: "linear" }}
+              className="h-full bg-gray-900"
+            />
+          </div>
+        </div>
+
+        {/* RIGHT :: Image (auto changes with slide) */}
+        <div className="order-1 lg:order-2 relative flex flex-col items-center gap-6">
+          <div className="relative">
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={product.id + "-stage"}
+                initial={{ scale: 0.8, rotateY: -30, opacity: 0 }}
+                animate={{ scale: 1, rotateY: 0, opacity: 1 }}
+                exit={{ scale: 0.8, rotateY: 30, opacity: 0 }}
+                transition={{ duration: 0.8, ease: "easeInOut" }}
+                className="relative w-80 h-80 md:w-[460px] md:h-[460px] rounded-full flex items-center justify-center overflow-hidden shadow-2xl"
+              >
+                <img
+                  src={product.image}
+                  alt={product.name}
+                  className="w-full h-full object-cover rounded-full"
+                />
+              </motion.div>
+            </AnimatePresence>
+          </div>
+
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={product.id + "-price"}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -20 }}
+              transition={{ duration: 0.45, ease: "easeOut" }}
+              className="px-6 py-3 bg-white rounded-full shadow-lg text-gray-900 font-extrabold text-2xl"
+            >
+              {product.price}
+            </motion.div>
+            <motion.div
+              key={product.id + "-bg"}
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 0.5, scale: 1.1 }}
+              exit={{ opacity: 0, scale: 0.9 }}
+              transition={{ duration: 1.2, ease: "easeInOut" }}
+              className="absolute w-[500px] h-[500px] rounded-full bg-gradient-to-tr from-amber-200 to-rose-200 blur-3xl -z-10"
+            />
+          </AnimatePresence>
+        </div>
+      </div>
+
+      {/* THUMBS (still clickable) */}
+      <div className="hidden md:block absolute right-0 top-1/2 -translate-y-1/2 z-20">
+        <ul className="flex flex-col items-end gap-6 pr-4">
+          {products.map((p, i) => {
+            const isActive = i === active;
+            return (
+              <li key={p.id}>
+                <button
+                  onClick={() => setActive(i)}
+                  className="group focus:outline-none"
+                >
+                  {isActive ? (
+                    <motion.div
+                      layout
+                      initial={{ x: 50, opacity: 0 }}
+                      animate={{ x: 0, opacity: 1 }}
+                      transition={{ duration: 0.4 }}
+                      className="flex items-center bg-white pr-5 pl-2 py-2 rounded-l-full shadow-xl"
+                    >
+                      <div className="relative w-20 h-20 rounded-full overflow-hidden">
+                        <img
+                          src={p.thumb}
+                          alt={p.name}
+                          className="w-full h-full object-cover"
+                        />
+                        <span className="absolute inset-0 rounded-full ring-2 ring-gray-900/80" />
+                      </div>
+                      <div className="text-left ml-4 mr-1">
+                        <p className="text-sm font-bold text-gray-900 leading-tight">
+                          {p.name}
+                        </p>
+                        <p className="text-[11px] text-gray-500">#{p.sku}</p>
+                      </div>
+                    </motion.div>
+                  ) : (
+                    <motion.div
+                      whileHover={{ scale: 1.05, opacity: 1, x: -4 }}
+                      className="w-20 h-20 bg-white rounded-full flex items-center justify-center shadow-md opacity-60 transition"
+                    >
+                      <img
+                        src={p.thumb}
+                        alt={p.name}
+                        className="w-12 h-12 object-cover rounded-full"
+                      />
+                    </motion.div>
+                  )}
+                </button>
+              </li>
+            );
+          })}
+        </ul>
+      </div>
+    </div>
+  );
+}

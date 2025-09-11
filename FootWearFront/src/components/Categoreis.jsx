@@ -59,27 +59,76 @@ const secondRow = [
 //     </div>
 // )
 
+import { motion } from "framer-motion";
+
+
 const Card = ({ img, subtitle, title }) => (
-    <div className="relative rounded-md overflow-hidden group max-w-full">
-        <img
-            src={img}
-            alt={title}
-            className="w-full h-80 object-cover transition-transform duration-500 group-hover:scale-110"
+  <motion.div
+    className="relative rounded-md overflow-hidden group max-w-full"
+    initial={{ opacity: 0, y: 40 }}
+    whileInView={{ opacity: 1, y: 0 }}
+    transition={{ duration: 0.6, ease: "easeOut" }}
+    viewport={{ once: true }}
+  >
+    {/* Image */}
+    <motion.img
+      src={img}
+      alt={title}
+      className="w-full h-80 object-cover transition-transform duration-700 group-hover:scale-110"
+    />
+
+    {/* Overlay with animated gradient */}
+    <motion.div
+      className="absolute inset-0 flex flex-col justify-end p-6 transition-all duration-700"
+      initial={{ background: "rgba(0,0,0,0.6)" }}
+      whileHover={{
+        background:
+          "linear-gradient(to top, rgba(185,28,28,0.85), rgba(30,58,138,0.85))",
+      }}
+      transition={{ duration: 0.8, ease: "easeInOut" }}
+    >
+      {/* Subtitle */}
+      <motion.p
+        className="text-xs uppercase tracking-widest text-gray-300"
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5, delay: 0.2 }}
+        viewport={{ once: true }}
+      >
+        {subtitle}
+      </motion.p>
+
+      {/* Title */}
+      <motion.h3
+        className="text-lg md:text-xl font-bold leading-snug text-white mt-1"
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5, delay: 0.3 }}
+        viewport={{ once: true }}
+      >
+        {title}
+      </motion.h3>
+
+      {/* SHOP NOW Button */}
+      <motion.button
+        className="mt-3 text-white font-semibold text-base relative focus:outline-none self-start"
+        style={{ border: "none", background: "none" }}
+        whileHover={{ scale: 1.1, color: "#facc15" }}
+        transition={{ type: "spring", stiffness: 200 }}
+      >
+        SHOP NOW
+        {/* underline animation */}
+        <motion.span
+          className="absolute left-0 -bottom-1 h-[2px] bg-yellow-400"
+          initial={{ width: 0 }}
+          whileHover={{ width: "100%" }}
+          transition={{ duration: 0.4 }}
         />
-        <div className="absolute inset-0 bg-black bg-opacity-60 flex flex-col justify-end p-6">
-            <p className="text-xs uppercase tracking-widest text-gray-300">{subtitle}</p>
-            <h3 className="text-lg md:text-xl font-bold leading-snug text-white mt-1">
-                {title}
-            </h3>
-            <button
-                className="mt-3 text-white font-semibold text-base underline underline-offset-4 decoration-2 hover:text-white hover:decoration-white focus:outline-none transition-all px-0 py-0 self-start"
-                style={{ border: 'none', background: 'none' }}
-            >
-                SHOP NOW
-            </button>
-        </div>
-    </div>
-)
+      </motion.button>
+    </motion.div>
+  </motion.div>
+);
+
 
 
 const Categoreis = () => {
