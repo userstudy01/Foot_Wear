@@ -1,420 +1,10 @@
-// import React, { useEffect, useState } from "react";
-// import { FaFacebookF, FaInstagram, FaTwitter } from "react-icons/fa";
 
-// const NewsletterPopup = () => {
 
-//     const [show, setShow] = useState(false);
 
-//     useEffect(() => {
-//         const isClosed = localStorage.getItem("newsletter_closed");
-//         if (!isClosed) {
-//             const timer = setTimeout(() => {
-//                 setShow(true);
-//             }, 10000); // 10 seconds
-//             return () => clearTimeout(timer);
-//         }
-//     }, []);
 
-//     const handleClose = () => {
-//         setShow(false);
-//         localStorage.setItem("newsletter_closed", "true");
-//     };
 
-//     if (!show) return null;
-//     return (
-//         <div className="fixed inset-0 bg-black bg-opacity-60 flex items-center justify-center z-50">
-//             <div className="bg-white w-[90%] md:w-[800px] rounded-md shadow-lg overflow-hidden relative flex flex-col md:flex-row">
 
-//                 {/* Left Image */}
-//                 <div className="md:w-1/2 w-full">
-//                     <img
-//                         src="https://images.unsplash.com/photo-1600185365227-7c2cfdd51f48?auto=format&fit=crop&w=800&q=80"
-//                         alt="Sneaker"
-//                         className="h-full w-full object-cover"
-//                     />
-//                 </div>
 
-//                 {/* Right Content */}
-//                 <div className="md:w-1/2 w-full p-8 flex flex-col justify-center relative">
-//                     {/* Close Button */}
-//                     <button
-//                         onClick={handleClose}
-//                         className="absolute top-3 right-3 text-gray-600 hover:text-black text-2xl"
-//                     >
-//                         ×
-//                     </button>
-
-//                     <h2 className="text-4xl font-bold mb-4 tracking-wider">
-//                         ALWAYS <br /> FIRST.
-//                     </h2>
-//                     <p className="text-gray-600 text-sm mb-5">
-//                         Nulla tincidunt convallis bibendum. Duis sed risus cipit justo.
-//                         Integer neque felis, egestas a euismod in pulvinar.
-//                     </p>
-
-//                     {/* Email input */}
-//                     <div className="flex items-center border border-gray-300 rounded-full px-4 py-2 mb-4">
-//                         <input
-//                             type="email"
-//                             placeholder="email"
-//                             className="flex-grow outline-none text-sm text-gray-700 placeholder-gray-400"
-//                         />
-//                     </div>
-
-//                     {/* Subscribe button */}
-//                     <button className="w-full bg-orange-500 text-white py-3 rounded-full font-semibold hover:bg-orange-600 transition">
-//                         Subscribe
-//                     </button>
-
-//                     {/* Social icons */}
-//                     <div className="flex space-x-5 mt-6 text-gray-700">
-//                         <a href="#" className="hover:text-orange-500">
-//                             <FaTwitter size={18} />
-//                         </a>
-//                         <a href="#" className="hover:text-orange-500">
-//                             <FaFacebookF size={18} />
-//                         </a>
-//                         <a href="#" className="hover:text-orange-500">
-//                             <FaInstagram size={18} />
-//                         </a>
-//                     </div>
-//                 </div>
-//             </div>
-//         </div>
-//     );
-// }
-
-// export default NewsletterPopup
-
-// import React, { useEffect, useState } from "react";
-// import { FaFacebookF, FaInstagram, FaTwitter } from "react-icons/fa";
-// import newslatter from '../assets/bg.jpg'
-
-// const NewsletterPopup = () => {
-//     const [show, setShow] = useState(false);
-
-//     useEffect(() => {
-//         console.log("🔄 useEffect running...");
-//         const timer = setTimeout(() => {
-//             console.log("✅ Showing popup now!");
-//             setShow(true);
-//         }, 3000);
-//         return () => clearTimeout(timer);
-//     }, []);
-
-//     const handleClose = () => {
-//         console.log("❌ Popup closed by user");
-//         setShow(false);
-//     };
-
-//     if (!show) {
-//         console.log("🙈 Popup hidden");
-//         return null;
-//     }
-
-//     console.log("👀 Popup is visible now!");
-//     return (
-//         <div className="fixed inset-0 bg-black bg-opacity-60 flex items-center justify-center z-50">
-//             <div className="bg-white w-[90%] md:w-[800px] rounded-md shadow-lg overflow-hidden relative flex flex-col md:flex-row">
-//                 {/* Left Image */}
-//                 <div className="md:w-1/2 w-full">
-//                     <img
-//                         src={newslatter}
-//                         alt="Sneaker"
-//                         className="h-full w-full object-cover"
-//                     />
-//                 </div>
-
-//                 {/* Right Content */}
-//                 <div className="md:w-1/2 w-full p-8 flex flex-col justify-center relative">
-//                     {/* Close Button */}
-//                     <button
-//                         onClick={handleClose}
-//                         className="absolute top-3 right-3 text-gray-600 hover:text-black text-2xl"
-//                     >
-//                         ×
-//                     </button>
-
-//                     <h2 className="text-4xl font-bold mb-4 tracking-wider">
-//                         ALWAYS <br /> FIRST.
-//                     </h2>
-//                     <p className="text-gray-600 text-sm mb-5">
-//                         Nulla tincidunt convallis bibendum. Duis sed risus cipit justo.
-//                         Integer neque felis, egestas a euismod in pulvinar.
-//                     </p>
-
-//                     {/* Email input */}
-//                     <div className="flex items-center border border-gray-300 rounded-full px-4 py-2 mb-4">
-//                         <input
-//                             type="email"
-//                             placeholder="email"
-//                             className="flex-grow outline-none text-sm text-gray-700 placeholder-gray-400"
-//                         />
-//                     </div>
-
-//                     {/* Subscribe button */}
-//                     <button className="w-full bg-orange-500 text-white py-3 rounded-full font-semibold hover:bg-orange-600 transition">
-//                         Subscribe
-//                     </button>
-
-//                     {/* Social icons */}
-//                     <div className="flex space-x-5 mt-6 text-gray-700">
-//                         <a href="#" className="hover:text-orange-500">
-//                             <FaTwitter size={18} />
-//                         </a>
-//                         <a href="#" className="hover:text-orange-500">
-//                             <FaFacebookF size={18} />
-//                         </a>
-//                         <a href="#" className="hover:text-orange-500">
-//                             <FaInstagram size={18} />
-//                         </a>
-//                     </div>
-//                 </div>
-//             </div>
-//         </div>
-//     );
-// };
-
-// export default NewsletterPopup;
-
-// import React, { useEffect, useState } from "react";
-// import { FaFacebookF, FaInstagram, FaTwitter } from "react-icons/fa";
-// import { motion, AnimatePresence } from "framer-motion";
-// import newslatter from "../assets/bg.jpg";
-
-// const NewsletterPopup = () => {
-//   const [show, setShow] = useState(false);
-
-//   useEffect(() => {
-//     const timer = setTimeout(() => {
-//       setShow(true);
-//     }, 3000);
-//     return () => clearTimeout(timer);
-//   }, []);
-
-//   const handleClose = () => setShow(false);
-
-//   return (
-//     <AnimatePresence>
-//       {show && (
-//         <motion.div
-//           className="fixed inset-0 bg-black bg-opacity-60 flex items-center justify-center z-50"
-//           initial={{ opacity: 0 }}
-//           animate={{ opacity: 1 }}
-//           exit={{ opacity: 0 }}
-//           transition={{ duration: 0.4 }}
-//         >
-//           <motion.div
-//             className="bg-white w-[90%] md:w-[800px] rounded-md shadow-2xl overflow-hidden relative flex flex-col md:flex-row"
-//             initial={{ opacity: 0, scale: 0.9 }}
-//             animate={{ opacity: 1, scale: 1 }}
-//             exit={{ opacity: 0, scale: 0.9 }}
-//             transition={{ duration: 0.5, ease: "easeOut" }}
-//           >
-//             {/* Left Image Animation - shoe drops from top */}
-//             <motion.div
-//               className="md:w-1/2 w-full flex items-center justify-center bg-orange-50"
-//               initial={{ y: -200, opacity: 0 }}
-//               animate={{ y: 0, opacity: 1 }}
-//               transition={{ type: "spring", stiffness: 100, damping: 15 }}
-//             >
-//               <img
-//                 src={newslatter}
-//                 alt="Sneaker"
-//                 className="h-full w-full object-cover"
-//               />
-//             </motion.div>
-
-//             {/* Right Content Animation */}
-//             <motion.div
-//               className="md:w-1/2 w-full p-8 flex flex-col justify-center relative"
-//               initial={{ x: 100, opacity: 0 }}
-//               animate={{ x: 0, opacity: 1 }}
-//               transition={{ delay: 0.3, duration: 0.6, ease: "easeOut" }}
-//             >
-//               {/* Close Button */}
-//               <button
-//                 onClick={handleClose}
-//                 className="absolute top-3 right-3 text-gray-600 hover:text-black text-2xl"
-//               >
-//                 ×
-//               </button>
-
-//               <h2 className="text-4xl font-bold mb-4 tracking-wider">
-//                 ALWAYS <br /> FIRST.
-//               </h2>
-//               <p className="text-gray-600 text-sm mb-5">
-//                 Nulla tincidunt convallis bibendum. Duis sed risus cipit justo.
-//                 Integer neque felis, egestas a euismod in pulvinar.
-//               </p>
-
-//               {/* Email input */}
-//               <div className="flex items-center border border-gray-300 rounded-full px-4 py-2 mb-4">
-//                 <input
-//                   type="email"
-//                   placeholder="email"
-//                   className="flex-grow outline-none text-sm text-gray-700 placeholder-gray-400"
-//                 />
-//               </div>
-
-//               {/* Subscribe button */}
-//               <motion.button
-//                 className="w-full bg-orange-500 text-white py-3 rounded-full font-semibold hover:bg-orange-600 transition"
-//                 initial={{ scale: 0.9, opacity: 0 }}
-//                 animate={{ scale: 1, opacity: 1 }}
-//                 transition={{ delay: 0.6, type: "spring", stiffness: 200 }}
-//               >
-//                 Subscribe
-//               </motion.button>
-
-//               {/* Social icons */}
-//               <motion.div
-//                 className="flex space-x-5 mt-6 text-gray-700"
-//                 initial={{ opacity: 0 }}
-//                 animate={{ opacity: 1 }}
-//                 transition={{ delay: 0.8 }}
-//               >
-//                 <a href="#" className="hover:text-orange-500">
-//                   <FaTwitter size={18} />
-//                 </a>
-//                 <a href="#" className="hover:text-orange-500">
-//                   <FaFacebookF size={18} />
-//                 </a>
-//                 <a href="#" className="hover:text-orange-500">
-//                   <FaInstagram size={18} />
-//                 </a>
-//               </motion.div>
-//             </motion.div>
-//           </motion.div>
-//         </motion.div>
-//       )}
-//     </AnimatePresence>
-//   );
-// };
-
-// export default NewsletterPopup;
-
-// import React, { useEffect, useState } from "react";
-// import { FaFacebookF, FaInstagram, FaTwitter } from "react-icons/fa";
-// import { motion, AnimatePresence } from "framer-motion";
-// import newslatter from "../assets/bg.jpg";
-
-// const NewsletterPopup = () => {
-//   const [show, setShow] = useState(false);
-
-//   useEffect(() => {
-//     const timer = setTimeout(() => {
-//       setShow(true);
-//     }, 2000);
-//     return () => clearTimeout(timer);
-//   }, []);
-
-//   const handleClose = () => setShow(false);
-
-//   return (
-//     <AnimatePresence>
-//       {show && (
-//         <motion.div
-//           className="fixed inset-0 bg-black bg-opacity-60 flex items-center justify-center z-50"
-//           initial={{ opacity: 0 }}
-//           animate={{ opacity: 1 }}
-//           exit={{ opacity: 0 }}
-//           transition={{ duration: 0.4 }}
-//         >
-//           <motion.div
-//             className="bg-white w-[95%] max-w-[600px] rounded-2xl shadow-2xl overflow-hidden relative flex flex-col md:flex-row"
-//             initial={{ opacity: 0, scale: 0.8 }}
-//             animate={{ opacity: 1, scale: 1 }}
-//             exit={{ opacity: 0, scale: 0.8 }}
-//             transition={{ type: "spring", stiffness: 120, damping: 15 }}
-//           >
-//             {/* Left Image - Drop from top */}
-//             <motion.div
-//               className="md:w-1/2 w-full flex items-center justify-center bg-orange-50"
-//               initial={{ y: -150, opacity: 0 }}
-//               animate={{ y: 0, opacity: 1 }}
-//               transition={{ type: "spring", stiffness: 120, damping: 12 }}
-//             >
-//               <img
-//                 src={newslatter}
-//                 alt="Sneaker"
-//                 className="h-full w-full object-cover"
-//               />
-//             </motion.div>
-
-//             {/* Right Content */}
-//             <motion.div
-//               className="md:w-1/2 w-full p-6 flex flex-col justify-center relative"
-//               initial={{ y: 50, opacity: 0 }}
-//               animate={{ y: 0, opacity: 1 }}
-//               transition={{ delay: 0.3, duration: 0.6, ease: "easeOut" }}
-//             >
-//               {/* Close Button */}
-//               <button
-//                 onClick={handleClose}
-//                 className="absolute top-3 right-3 text-gray-600 hover:text-black text-2xl"
-//               >
-//                 ×
-//               </button>
-
-//               <h2 className="text-3xl font-bold mb-3 tracking-wider">
-//                 ALWAYS <br /> FIRST.
-//               </h2>
-//               <p className="text-gray-600 text-sm mb-4">
-//                 Nulla tincidunt convallis bibendum. Duis sed risus cipit justo.
-//                 Integer neque felis, egestas a euismod in pulvinar.
-//               </p>
-
-//               {/* Email input */}
-//               <motion.div
-//                 className="flex items-center border border-gray-300 rounded-full px-4 py-2 mb-3"
-//                 initial={{ opacity: 0, y: 20 }}
-//                 animate={{ opacity: 1, y: 0 }}
-//                 transition={{ delay: 0.5 }}
-//               >
-//                 <input
-//                   type="email"
-//                   placeholder="email"
-//                   className="flex-grow outline-none text-sm text-gray-700 placeholder-gray-400"
-//                 />
-//               </motion.div>
-
-//               {/* Subscribe button */}
-//               <motion.button
-//                 className="w-full bg-orange-500 text-white py-2.5 rounded-full font-semibold hover:bg-orange-600 transition"
-//                 initial={{ scale: 0.8, opacity: 0 }}
-//                 animate={{ scale: 1, opacity: 1 }}
-//                 transition={{ delay: 0.7, type: "spring", stiffness: 200 }}
-//               >
-//                 Subscribe
-//               </motion.button>
-
-//               {/* Social icons */}
-//               <motion.div
-//                 className="flex space-x-5 mt-5 text-gray-700"
-//                 initial={{ opacity: 0 }}
-//                 animate={{ opacity: 1 }}
-//                 transition={{ delay: 0.9 }}
-//               >
-//                 <a href="#" className="hover:text-orange-500">
-//                   <FaTwitter size={18} />
-//                 </a>
-//                 <a href="#" className="hover:text-orange-500">
-//                   <FaFacebookF size={18} />
-//                 </a>
-//                 <a href="#" className="hover:text-orange-500">
-//                   <FaInstagram size={18} />
-//                 </a>
-//               </motion.div>
-//             </motion.div>
-//           </motion.div>
-//         </motion.div>
-//       )}
-//     </AnimatePresence>
-//   );
-// };
-
-// export default NewsletterPopup;
 
 // import React, { useEffect, useState } from "react";
 // import { FaFacebookF, FaInstagram, FaTwitter } from "react-icons/fa";
@@ -715,7 +305,7 @@ export default NewsletterPopup;
   exit={{ opacity: 0, scale: 0.8, rotate: 10 }}
   transition={{ type: "spring", stiffness: 120, damping: 12 }}
 > */}
-  {/* Image Section */}
+{/* Image Section */ }
 //   <motion.div
 //     className="md:w-1/2 w-full flex items-center justify-center bg-orange-50"
 //     initial={{ y: -200, opacity: 0 }}
@@ -729,42 +319,42 @@ export default NewsletterPopup;
 //     />
 //   </motion.div>
 
-  {/* Text Section */}
+{/* Text Section */ }
 //   <motion.div
 //     className="md:w-1/2 w-full p-6 flex flex-col justify-center relative"
 //     initial={{ x: 100, opacity: 0 }}
 //     animate={{ x: 0, opacity: 1 }}
 //     transition={{ delay: 0.3, duration: 0.6, ease: "easeOut" }}
 //   >
-    {/* Close Button */}
-    // <motion.button
-    //   onClick={handleClose}
-    //   className="absolute top-2 right-2 text-gray-600 text-2xl"
-    //   whileHover={{
-    //     scale: 1.2,
-    //     color: "#ef4444",
-    //   }}
-    //   whileTap={{ scale: 0.9 }}
-    //   transition={{ duration: 0.3 }}
-    // >
-    //   ×
-    // </motion.button>
+{/* Close Button */ }
+// <motion.button
+//   onClick={handleClose}
+//   className="absolute top-2 right-2 text-gray-600 text-2xl"
+//   whileHover={{
+//     scale: 1.2,
+//     color: "#ef4444",
+//   }}
+//   whileTap={{ scale: 0.9 }}
+//   transition={{ duration: 0.3 }}
+// >
+//   ×
+// </motion.button>
 
-    // <h2 className="text-2xl font-bold mb-3 tracking-wider">
-    //   ALWAYS <br /> FIRST.
-    // </h2>
-    // <p className="text-gray-700 text-sm mb-4">
-    //   Nulla tincidunt convallis bibendum. Duis sed risus cipit justo.
-    //   Integer neque felis, egestas a euismod in pulvinar.
-    // </p>
+// <h2 className="text-2xl font-bold mb-3 tracking-wider">
+//   ALWAYS <br /> FIRST.
+// </h2>
+// <p className="text-gray-700 text-sm mb-4">
+//   Nulla tincidunt convallis bibendum. Duis sed risus cipit justo.
+//   Integer neque felis, egestas a euismod in pulvinar.
+// </p>
 
-    // <div className="flex items-center border border-gray-300 rounded-full px-3 py-2 mb-3 bg-white/70 shadow-inner">
-    //   <input
-    //     type="email"
-    //     placeholder="Enter your email"
-    //     className="flex-grow outline-none text-sm text-gray-700 placeholder-gray-400 bg-transparent px-1"
-    //   />
-    // </div>
+// <div className="flex items-center border border-gray-300 rounded-full px-3 py-2 mb-3 bg-white/70 shadow-inner">
+//   <input
+//     type="email"
+//     placeholder="Enter your email"
+//     className="flex-grow outline-none text-sm text-gray-700 placeholder-gray-400 bg-transparent px-1"
+//   />
+// </div>
 
 //     <motion.button
 //       className="w-full relative bg-gradient-to-r from-orange-500 to-red-500 text-white py-2.5 rounded-full font-semibold overflow-hidden group text-sm"

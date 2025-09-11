@@ -124,7 +124,7 @@ const HomePage = () => {
             <Categoreis />
 
             {/* FeatureSection */}
-            <FeatureSection />
+            {/* <FeatureSection /> */}
 
             {/* Footer */}
             <Footer />

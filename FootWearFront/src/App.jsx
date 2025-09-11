@@ -1,13 +1,13 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import AuthForm from "./components/AuthForm";
 import HomePage from "./components/HomePage";
-import About from "./components/about";
 import Signin from "./components/Signin";
 import Header from "./components/Header";
 import { ToastContainer } from "react-toastify";
 import NewsletterPopup from "./components/NewsletterPopup";
 import SignUp from "./components/Signup/SignUp";
 import Produc_tDetails from "./components/Produc_tDetails";
+import Aboutus from "./Pages/Aboutus";
 
 function App() {
   return (
@@ -22,8 +22,7 @@ function App() {
         <Route path="/newslatter" element={<NewsletterPopup />} />
         {/* <Route path="/product/:id" element={<ProductDetails />} /> */}
         <Route path="/product/:id" element={<Produc_tDetails />} />
-        <Route path="/about" element={<About />} />
-
+        <Route path="/aboutus" element={<Aboutus />} />
       </Routes>
       <ToastContainer />
     </Router>
