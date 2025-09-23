@@ -3,6 +3,11 @@ import React, { useState, useEffect, useRef } from "react";
 import { ChevronRight } from 'lucide-react';
 import images from '../assets/images'; // Make sure AboutGirl and Shoes exist here
 import CountUp from "react-countup";
+import Footer from "../components/Footer";
+import ReviewsSection from "../components/Reviews";
+import { Reviews } from "@mui/icons-material";
+import Header from "../components/Header";
+import CartPage from "../components/CartPage";
 
 
 const testimonials = [
@@ -61,6 +66,7 @@ const AboutUs = () => {
     };
     return (
         <>
+            <Header />
             {/* About Us Section */}
             <section className="relative bg-[#fbf7f3] overflow-hidden min-h-[650px]">
                 {/* Top thin yellow stripe */}
@@ -190,6 +196,7 @@ const AboutUs = () => {
                 </button>
             </section>
 
+            <CartPage />
             {/* Promo Banner Section */}
 
             <section className="w-full bg-white">
@@ -333,91 +340,11 @@ const AboutUs = () => {
                 </div>
             </section>
 
+            {/* <Reviews /> */}
+            <ReviewsSection />
 
-            <section className="w-full bg-[#fbf7f3] py-12 px-2">
-                <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-start gap-10">
-                    {/* Left Heading + Controls */}
-                    <div className="md:w-1/3 flex flex-col items-start pt-6">
-                        <h2 className="text-5xl md:text-6xl font-extrabold text-[#241a2d] mb-10 leading-none">
-                            What Our Clients Say<br />About Us
-                        </h2>
-                        <div className="flex items-center gap-6 mt-3">
-                            {/* Left Arrow */}
-                            <button
-                                onClick={() => {
-                                    goLeft();
-                                    startAutoSlide();
-                                }}
-                                className="w-14 h-14 rounded-full border-2 border-[#241a2d] flex items-center justify-center relative group transition hover:bg-gray-100"
-                            >
-                                <span className="absolute w-3 h-3 bg-[#241a2d] rounded-full left-2 top-2"></span>
-                                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#241a2d" strokeWidth="2.8"
-                                    strokeLinecap="round" strokeLinejoin="round">
-                                    <polyline points="15 6 9 12 15 18" />
-                                </svg>
-                            </button>
-                            {/* Right Arrow */}
-                            <button
-                                onClick={() => {
-                                    goRight();
-                                    startAutoSlide();
-                                }}
-                                className="w-14 h-14 rounded-full border-2 border-[#241a2d] flex items-center justify-center relative group transition hover:bg-gray-100"
-                            >
-                                <span className="absolute w-3 h-3 bg-[#241a2d] rounded-full right-2 top-2"></span>
-                                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#241a2d" strokeWidth="2.8"
-                                    strokeLinecap="round" strokeLinejoin="round">
-                                    <polyline points="9 6 15 12 9 18" />
-                                </svg>
-                            </button>
-                        </div>
-                    </div>
-                    {/* Testimonial Cards */}
-                    <div className="md:w-2/3 flex gap-8">
-                        {[0, 1].map((offset) => {
-                            let idx = (active + offset) % testimonials.length;
-                            let t = testimonials[idx];
-                            return (
-                                <div
-                                    key={idx}
-                                    className="bg-white border border-[#241a2d] rounded-[2rem] p-10 flex flex-col justify-between shadow-none min-w-[340px] max-w-[400px] transition"
-                                >
-                                    <p className="text-[#6a6a6a] text-lg mb-8">{t.text}</p>
-                                    <div className="flex items-center justify-between gap-6">
-                                        <div className="flex items-center">
-                                            <img
-                                                src={t.avatar}
-                                                alt={t.name}
-                                                className="w-14 h-14 rounded-full object-cover mr-4"
-                                            />
-                                            <div>
-                                                <div className="font-extrabold text-lg text-[#241a2d] mb-1">{t.name}</div>
-                                                <div className="flex">
-                                                    {[...Array(t.stars)].map((_, i) => (
-                                                        <svg key={i} width="15" height="15" viewBox="0 0 24 24" fill="#e72a50">
-                                                            <path d="M12 17.3L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" />
-                                                        </svg>
-                                                    ))}
-                                                </div>
-                                            </div>
-                                        </div>
-                                        {/* Quote Icon */}
-                                        <svg width="44" height="32" viewBox="0 0 54 36" fill="none">
-                                            <g stroke="#fab958" strokeWidth="2">
-                                                <path d="M15 26c0-6.627 5.373-12 12-12" />
-                                                <path d="M42 26c0-6.627 5.373-12 12-12" />
-                                            </g>
-                                        </svg>
-                                    </div>
-                                </div>
-                            );
-                        })}
-                    </div>
-                </div>
-            </section>
-
-
-
+            {/* Footer */}
+            <Footer />
         </>
     );
 };

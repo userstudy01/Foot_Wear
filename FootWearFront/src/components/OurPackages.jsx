@@ -4,6 +4,7 @@ import images from "../assets/images";
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
+
 const products = [
   {
     id: 1,

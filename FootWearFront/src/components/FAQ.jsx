@@ -71,7 +71,38 @@ const FAQ = () => {
                 </div>
 
                 {/* Right Side - Image */}
+                {/* <div className="flex justify-center">
+                    <div className="relative w-full max-w-sm md:max-w-md overflow-hidden border-4 border-yellow-400 rounded-lg">
+                        <img
+                            src={images.Slide5}
+                            alt="Shoes"
+                            className="w-full h-full object-cover"
+                        />
+                        <div className="absolute inset-0 flex items-center justify-center">
+                            <button className="w-16 h-16 rounded-full bg-white/80 backdrop-blur-md flex items-center justify-center shadow-lg">
+                                <span className="w-0 h-0 border-t-[10px] border-t-transparent border-l-[16px] border-l-black border-b-[10px] border-b-transparent"></span>
+                            </button>
+                        </div>
+                    </div>
+                </div> */}
+
                 <div className="flex justify-center">
+                    <div className="relative w-full max-w-sm md:max-w-md h-80 overflow-hidden border-4 border-yellow-400 rounded-lg">
+                        <img
+                            src={images.Slide5}
+                            alt="Shoes"
+                            className="w-full h-full object-cover"
+                        />
+                        <div className="absolute inset-0 flex items-center justify-center">
+                            <button className="w-16 h-16 rounded-full bg-white/80 backdrop-blur-md flex items-center justify-center shadow-lg">
+                                <span className="w-0 h-0 border-t-[10px] border-t-transparent border-l-[16px] border-l-black border-b-[10px] border-b-transparent"></span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+
+                {/* <div className="flex justify-center">
                     <div className="relative w-full max-w-sm md:max-w-md overflow-hidden rounded-[100%] border-4 border-yellow-400">
                         <img
                             src={images.Slide5}
@@ -84,7 +115,7 @@ const FAQ = () => {
                             </button>
                         </div>
                     </div>
-                </div>
+                </div> */}
             </div>
         </section>
     )

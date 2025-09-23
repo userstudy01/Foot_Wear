@@ -25,20 +25,48 @@ const Header = () => {
                     <nav className="hidden md:flex space-x-8 items-center">
                         <a href="/" className="hover:text-orange-400">Home</a>
 
-                        <div className="relative group">
-                            <a href="#" className="hover:text-orange-400">Shop</a>
+                        {/* <div className="relative group">
+                            <a href="#" className="hover:text-orange-400">Product</a>
                             <div className="absolute left-0 hidden group-hover:block bg-white text-black mt-2 rounded shadow-lg w-40">
                                 <a href="/men" className="block px-4 py-2 hover:bg-gray-100">Men</a>
                                 <a href="/women" className="block px-4 py-2 hover:bg-gray-100">Women</a>
                                 <a href="/kids" className="block px-4 py-2 hover:bg-gray-100">Kids</a>
                             </div>
+                        </div> */}
+
+                        <div className="relative group inline-block">
+                            <div className="cursor-pointer hover:text-orange-400">Product</div>
+                            <div className="absolute left-0 mt-2 bg-white rounded shadow-lg w-40 opacity-0 pointer-events-none group-hover:opacity-100 group-hover:pointer-events-auto transition duration-200 z-50">
+                                <a href="/men" className="block px-4 py-2 text-gray-900 hover:bg-gray-100">Men</a>
+                                <a href="/women" className="block px-4 py-2 text-gray-900 hover:bg-gray-100">Women</a>
+                                <a href="/kids" className="block px-4 py-2 text-gray-900 hover:bg-gray-100">Kids</a>
+                            </div>
                         </div>
 
-                        <a href="/blog" className="hover:text-orange-400">Blog</a>
-                        <a href="/pages" className="hover:text-orange-400">Pages</a>
+
+
+
+
+                        {/* <a href="/blog" className="hover:text-orange-400">Blog</a> */}
+                        {/* <Link to="/blog" className="hover:text-orange-400">
+                            Blog
+                        </Link> */}
+
+                        <div className="relative group inline-block">
+                            <div href="#" className="cursor-pointer hover:text-orange-400">Pages</div>
+                            <div className="absolute left-0 mt-2 bg-white rounded shadow-lg w-40 opacity-0 pointer-events-none group-hover:opacity-100 group-hover:pointer-events-auto transition duration-200 z-50">
+                                <a href="/aboutus" className="block px-4 py-2 text-gray-900 hover:bg-gray-100">About us</a>
+                                <a href="/blog" className="block px-4 py-2 text-gray-900 hover:bg-gray-100">Blog</a>
+                                {/* <a href="/kids" className="block px-4 py-2 hover:bg-gray-100">Kids</a> */}
+                            </div>
+                        </div>
+                        {/* <a href="/pages" className="hover:text-orange-400"></a> */}
                         {/* <a href="/about" className="hover:text-orange-400">About</a> */}
                         <Link to="/aboutus" className="hover:text-orange-400">
                             About
+                        </Link>
+                        <Link to="/contactus" className="hover:text-orange-400">
+                            Contact US
                         </Link>
                     </nav>
 
