@@ -53,7 +53,7 @@ const HomePage = () => {
             {/* Product */}
             <Product />
 
-            <NewsletterPopup />
+            {/* <NewsletterPopup /> */}
 
             {/* Brands */}
             {/* <section className="py-10 text-center">
