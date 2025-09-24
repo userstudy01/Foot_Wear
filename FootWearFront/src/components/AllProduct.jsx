@@ -1,160 +1,418 @@
 import React, { useState } from "react";
-import Images from "../assets/images"
+import Images from "../assets/images";
 import Header from "./Header";
-
+import Footer from "./Footer";
 import { ShoppingCart, Eye, Heart } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
+
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: { staggerChildren: 0.15, delayChildren: 0.1 },
+  },
+  exit: { opacity: 0 },
+};
+
+// icon animations → slide-in from left
+const iconVariants = {
+  hidden: { opacity: 0, x: -40, scale: 0.8 },
+  visible: {
+    opacity: 1,
+    x: 0,
+    scale: 1,
+    transition: { duration: 0.5, ease: "easeOut" },
+  },
+  exit: { opacity: 0, x: -20, scale: 0.8, transition: { duration: 0.3 } },
+};
 
 const shoes = [
-    { id: 1, name: "Air Max 270", price: "$150", img: Images.Logo },
-    { id: 2, name: "Air Force 1", price: "$120", img: Images.Logo1 },
-    { id: 3, name: "Jordan 1", price: "$180", img: Images.Slide1 },
-    { id: 4, name: "Blazer Mid", price: "$130", img: Images.Slide4 },
-    { id: 5, name: "Dunk Low", price: "$110", img: Images.Slide3 },
-    { id: 6, name: "Pegasus 40", price: "$140", img: Images.Slide5 },
+  { id: 1, name: "Air Max 270", price: "$150", img: Images.Logo },
+  { id: 2, name: "Air Force 1", price: "$120", img: Images.Logo1 },
+  { id: 3, name: "Jordan 1", price: "$180", img: Images.Slide1 },
+  { id: 4, name: "Blazer Mid", price: "$130", img: Images.Slide4 },
+  { id: 5, name: "Dunk Low", price: "$110", img: Images.Slide3 },
+  { id: 6, name: "Pegasus 40", price: "$140", img: Images.Slide5 },
+  { id: 7, name: "Classic Leather", price: "$125", img: Images.Slide2 },
+  { id: 8, name: "Sporty Run", price: "$135", img: Images.Slide3 },
+  { id: 9, name: "Street Max", price: "$145", img: Images.Slide4 },
+  { id: 10, name: "Air Max 270", price: "$150", img: Images.Logo },
+  { id: 11, name: "Air Force 1", price: "$120", img: Images.Logo1 },
+  { id: 12, name: "Jordan 1", price: "$180", img: Images.Slide1 },
+  { id: 13, name: "Blazer Mid", price: "$130", img: Images.Slide4 },
+  { id: 14, name: "Dunk Low", price: "$110", img: Images.Slide3 },
+  { id: 15, name: "Pegasus 40", price: "$140", img: Images.Slide5 },
+  { id: 16, name: "Classic Leather", price: "$125", img: Images.Slide2 },
+  { id: 17, name: "Sporty Run", price: "$135", img: Images.Slide3 },
+  { id: 18, name: "Street Max", price: "$145", img: Images.Slide4 },
+  { id: 19, name: "Air Max 270", price: "$150", img: Images.Logo },
+  { id: 20, name: "Air Force 1", price: "$120", img: Images.Logo1 },
+  { id: 21, name: "Jordan 1", price: "$180", img: Images.Slide1 },
+  { id: 22, name: "Blazer Mid", price: "$130", img: Images.Slide4 },
+  { id: 23, name: "Dunk Low", price: "$110", img: Images.Slide3 },
+  { id: 24, name: "Pegasus 40", price: "$140", img: Images.Slide5 },
+  { id: 25, name: "Classic Leather", price: "$125", img: Images.Slide2 },
+  { id: 26, name: "Sporty Run", price: "$135", img: Images.Slide3 },
+  { id: 27, name: "Street Max", price: "$145", img: Images.Slide4 },
 ];
 
 const AllProduct = () => {
-    const [filterOpen, setFilterOpen] = useState(false);
+  const [filterOpen, setFilterOpen] = useState(false);
+  const [showMoreBrands, setShowMoreBrands] = useState(false);
+  const [showMoreColors, setShowMoreColors] = useState(false);
+  const [gridCols, setGridCols] = useState(3); // default 3 columns
+  const [hovered, setHovered] = useState(null);
 
-    return (
+  // 👉 Pagination states
+  const [currentPage, setCurrentPage] = useState(1);
+  const itemsPerPage = 6;
 
-        <>
-            <Header />
-            <div className="max-w-7xl mx-auto px-6 py-10">
-                {/* Top section */}
-                <div className="flex justify-between items-start mb-8">
-                    {/* Left Title + Filter */}
-                    <div>
-                        <h1 className="text-2xl font-bold mb-4">Man Shoes</h1>
-                        <button
-                            onClick={() => setFilterOpen(!filterOpen)}
-                            className="bg-black text-white px-5 py-2 font-semibold"
-                        >
-                            {filterOpen ? "− Filter" : "+ Filter"}
-                        </button>
-                    </div>
+  // Pagination logic
+  const totalPages = Math.ceil(shoes.length / itemsPerPage);
+  const indexOfLast = currentPage * itemsPerPage;
+  const indexOfFirst = indexOfLast - itemsPerPage;
+  const currentShoes = shoes.slice(indexOfFirst, indexOfLast);
 
-                    {/* Right side breadcrumbs + sort */}
-                    <div className="flex items-center gap-6 text-gray-500 text-sm">
-                        <span>Home &gt; Man &gt; Shoes</span>
-                        <div>
-                            Sort by:{" "}
-                            <select className="border-none focus:ring-0 text-black">
-                                <option>Popular</option>
-                                <option>Newest</option>
-                                <option>Price Low to High</option>
-                                <option>Price High to Low</option>
-                            </select>
-                        </div>
-                    </div>
-                </div>
+  const goToPage = (page) => {
+    if (page < 1 || page > totalPages) return;
+    setCurrentPage(page);
+  };
 
-                {/* Content Row */}
-                <div className="flex gap-10">
-                    {/* Sidebar */}
-                    {/* Sidebar */}
-                    {filterOpen && (
-                        <div
-                            className={`
-      bg-white p-6 z-50
-      ${/* Mobile = overlay */""}
-      fixed inset-0 overflow-y-auto
-      lg:static lg:w-64 lg:shrink-0 lg:block
-    `}
-                        >
-                            {/* Close button only visible on mobile */}
-                            <div className="flex justify-between items-center mb-4 lg:hidden">
-                                <h2 className="text-lg font-bold">Filters</h2>
-                                <button
-                                    onClick={() => setFilterOpen(false)}
-                                    className="text-gray-600 text-xl font-bold"
-                                >
-                                    ×
-                                </button>
-                            </div>
+  // Tailwind classes map for dynamic columns
+  const gridMap = {
+    2: "grid-cols-2",
+    3: "grid-cols-3",
+    4: "grid-cols-4",
+  };
 
-                            {/* Filter Content */}
-                            <div className="space-y-6 text-sm text-gray-700">
-                                <div>
-                                    <p className="font-semibold mb-2">New items (11)</p>
-                                    <p>Sell-out (32)</p>
-                                </div>
-                                <div>
-                                    <p className="uppercase text-xs font-bold mb-2">Categories</p>
-                                    <ul className="space-y-1">
-                                        <li>Air Max (65)</li>
-                                        <li>Air Force (32)</li>
-                                        <li>Air Jordan (1)</li>
-                                        <li>Air VaporMax (32)</li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    )}
+  const brands = [
+    "AirWalk",
+    "BoldWalks",
+    "ComfortCreek",
+    "CozySteps",
+    "EcoStride",
+    "GlamStep",
+    "LuxeFeet",
+    "ProSteps",
+    "RetroSole",
+    "SimplyShoes",
+    "SportyFeet",
+    "SprintMax",
+    "TrailGear",
+    "TrendyFeet",
+    "UrbanStep",
+  ];
 
-                    {/* Shoes Grid */}
-                    <div
-                        className={`grid gap-10 flex-1 ${filterOpen
-                            ? "grid-cols-1 sm:grid-cols-2"
-                            : "grid-cols-1 sm:grid-cols-2 lg:grid-cols-3"
-                            }`}
-                    >
-                        {shoes.map((shoe) => (
-                            <div
-                                key={shoe.id}
-                                className="group relative bg-white rounded-lg overflow-hidden shadow hover:shadow-xl transition duration-300"
-                            >
-                                {/* Product Image + Hover Overlay */}
-                                <div className="relative bg-gray-100 aspect-square flex items-center justify-center overflow-hidden">
-                                    <img
-                                        src={shoe.img}
-                                        alt={shoe.name}
-                                        className="max-h-full max-w-full object-contain transition-transform duration-300 group-hover:scale-105"
-                                    />
+  const colors = [
+    "black",
+    "blue",
+    "brown",
+    "chocolate",
+    "darkslategray",
+    "deeppink",
+    "gray",
+    "red",
+    "beige",
+    "gold",
+    "purple",
+    "saddlebrown",
+    "white",
+  ];
 
-                                    {/* Dark overlay on hover */}
-                                    <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition duration-300"></div>
+  return (
+    <>
+      <Header />
+      <div className="max-w-7xl mx-auto px-6 py-10">
+        {/* Top section */}
+        <div className="flex justify-between items-center mb-8">
+          <div>
+            <h1 className="text-2xl font-bold mb-4">Man Shoes</h1>
+            <button
+              onClick={() => setFilterOpen(!filterOpen)}
+              className="bg-black text-white px-5 py-2 font-semibold"
+            >
+              {filterOpen ? "− Filter" : "+ Filter"}
+            </button>
+          </div>
 
-                                    {/* Hover Action Buttons */}
-                                    <div className="absolute inset-0 flex items-center justify-center gap-4 opacity-0 group-hover:opacity-100 transition duration-300">
-                                        <button className="bg-white rounded-full p-3 shadow hover:bg-gray-100">
-                                            <ShoppingCart size={18} />
-                                        </button>
-                                        <button className="bg-white rounded-full p-3 shadow hover:bg-gray-100">
-                                            <Eye size={18} />
-                                        </button>
-                                        <button className="bg-white rounded-full p-3 shadow hover:bg-gray-100">
-                                            <Heart size={18} />
-                                        </button>
-                                    </div>
-
-                                    {/* SALE / NEW Tag */}
-                                    {shoe.tag && (
-                                        <span className="absolute top-2 right-2 bg-black text-white text-xs px-2 py-1">
-                                            {shoe.tag}
-                                        </span>
-                                    )}
-                                </div>
-
-                                {/* Product Info */}
-                                <div className="mt-3 text-center pb-4">
-                                    <h3 className="font-semibold text-base">{shoe.name}</h3>
-                                    <div className="flex justify-center items-center gap-2 text-sm">
-                                        {shoe.oldPrice && (
-                                            <span className="line-through text-gray-400">{shoe.oldPrice}</span>
-                                        )}
-                                        <span className="font-medium">{shoe.price}</span>
-                                    </div>
-                                </div>
-                            </div>
-
-                        ))}
-                    </div>
-                </div>
+          {/* Right side */}
+          <div className="flex items-center gap-6 text-gray-500 text-sm">
+            <span>Home &gt; Man &gt; Shoes</span>
+            <div>
+              Sort by:{" "}
+              <select className="border-none focus:ring-0 text-black">
+                <option>Popular</option>
+                <option>Newest</option>
+                <option>Price Low to High</option>
+                <option>Price High to Low</option>
+              </select>
             </div>
-        </>
-    );
+
+            {/* Grid Toggle Buttons */}
+            <div className="flex border rounded overflow-hidden">
+              {[2, 3, 4].map((n) => (
+                <button
+                  key={n}
+                  onClick={() => setGridCols(n)}
+                  className={`px-4 py-2 text-sm border-r last:border-r-0 
+                    ${
+                      gridCols === n
+                        ? "bg-black text-white"
+                        : "bg-white text-gray-600 hover:bg-gray-100"
+                    }`}
+                >
+                  {"|".repeat(n)}
+                </button>
+              ))}
+            </div>
+          </div>
+        </div>
+
+        {/* Content */}
+        <div className="flex gap-8">
+          {/* Sidebar Filters (as it is) */}
+          {filterOpen && (
+            <aside className="bg-white rounded-xl shadow-md p-6 w-72 hidden lg:block sticky top-24 h-fit space-y-8">
+              {/* Section: Availability */}
+              <div>
+                <h3 className="font-semibold text-gray-800 mb-3 border-b pb-2">
+                  Availability
+                </h3>
+                <label className="flex items-center text-gray-600 hover:text-black cursor-pointer mb-2">
+                  <input type="checkbox" className="mr-2" /> In stock (15)
+                </label>
+                <label className="flex items-center text-gray-600 hover:text-black cursor-pointer">
+                  <input type="checkbox" className="mr-2" /> Out of stock (10)
+                </label>
+              </div>
+
+              {/* Section: Price */}
+              <div>
+                <h3 className="font-semibold text-gray-800 mb-3 border-b pb-2">
+                  Price
+                </h3>
+                <input
+                  type="range"
+                  min="0"
+                  max="250"
+                  className="w-full accent-black"
+                />
+                <div className="flex justify-between text-xs mt-3 text-gray-500">
+                  <input
+                    type="number"
+                    placeholder="0"
+                    className="border p-1 w-16 rounded"
+                  />
+                  <span>-</span>
+                  <input
+                    type="number"
+                    placeholder="250"
+                    className="border p-1 w-16 rounded"
+                  />
+                </div>
+              </div>
+
+              {/* Section: Brand */}
+              <div>
+                <h3 className="font-semibold text-gray-800 mb-3 border-b pb-2">
+                  Brand
+                </h3>
+                <div className="space-y-2">
+                  {brands
+                    .slice(0, showMoreBrands ? brands.length : 6)
+                    .map((b, i) => (
+                      <label
+                        key={i}
+                        className="flex items-center text-gray-600 hover:text-black cursor-pointer"
+                      >
+                        <input type="checkbox" className="mr-2" /> {b}
+                      </label>
+                    ))}
+                </div>
+                <button
+                  onClick={() => setShowMoreBrands(!showMoreBrands)}
+                  className="text-sm text-blue-600 mt-2"
+                >
+                  {showMoreBrands ? "− Show less" : "+ Show more"}
+                </button>
+              </div>
+
+              {/* Section: Color */}
+              <div>
+                <h3 className="font-semibold text-gray-800 mb-3 border-b pb-2">
+                  Color
+                </h3>
+                <div className="flex flex-wrap gap-2">
+                  {(showMoreColors ? colors : colors.slice(0, 8)).map(
+                    (c, i) => (
+                      <span
+                        key={i}
+                        className="w-6 h-6 rounded-full border shadow-sm cursor-pointer hover:scale-110 transition"
+                        style={{ backgroundColor: c }}
+                      ></span>
+                    )
+                  )}
+                </div>
+                <button
+                  onClick={() => setShowMoreColors(!showMoreColors)}
+                  className="text-sm text-blue-600 mt-2 block"
+                >
+                  {showMoreColors ? "− Show less" : "+ Show more"}
+                </button>
+              </div>
+            </aside>
+          )}
+
+          {/* Product Grid */}
+          <section className={`grid gap-8 flex-1 ${gridMap[gridCols]}`}>
+            {currentShoes.map((shoe) => (
+              <motion.div
+                key={shoe.id}
+                className="relative border border-gray-200 rounded-lg overflow-hidden bg-white shadow-md group cursor-pointer"
+                onMouseEnter={() => setHovered(shoe.id)}
+                onMouseLeave={() => setHovered(null)}
+                whileHover={{
+                  scale: 1.03,
+                  boxShadow: "0px 8px 25px rgba(0,0,0,0.15)",
+                }}
+                transition={{ type: "spring", stiffness: 200, damping: 15 }}
+              >
+                {/* Image */}
+                <div className="relative h-56 flex items-center justify-center bg-gray-50 overflow-hidden">
+                  <motion.img
+                    src={
+                      hovered === shoe.id
+                        ? shoe.hoverImage || shoe.img
+                        : shoe.img
+                    }
+                    alt={shoe.name}
+                    className="max-h-full max-w-full object-contain transition-transform duration-500"
+                    animate={
+                      hovered === shoe.id ? { y: [-5, 5, -5] } : { y: 0 }
+                    }
+                    transition={{
+                      repeat: hovered === shoe.id ? Infinity : 0,
+                      duration: 3,
+                      ease: "easeInOut",
+                    }}
+                  />
+
+                  {/* Hover Icons */}
+                  <AnimatePresence>
+                    {hovered === shoe.id && (
+                      <motion.div
+                        className="absolute inset-0 flex items-center justify-center bg-black/40"
+                        variants={containerVariants}
+                        initial="hidden"
+                        animate="visible"
+                        exit="exit"
+                      >
+                        <div className="flex gap-5">
+                          {/* Cart */}
+                          <motion.button
+                            variants={iconVariants}
+                            whileHover={{
+                              scale: 1.2,
+                              backgroundColor: "#2563eb",
+                              color: "#fff",
+                              boxShadow: "0 0 12px #2563eb",
+                            }}
+                            className="w-12 h-12 flex items-center justify-center rounded-full bg-white text-gray-700 shadow-lg"
+                          >
+                            <ShoppingCart size={20} />
+                          </motion.button>
+
+                          {/* Eye */}
+                          <motion.button
+                            variants={iconVariants}
+                            whileHover={{
+                              scale: 1.2,
+                              backgroundColor: "#16a34a",
+                              color: "#fff",
+                              boxShadow: "0 0 12px #16a34a",
+                            }}
+                            className="w-12 h-12 flex items-center justify-center rounded-full bg-white text-gray-700 shadow-lg"
+                          >
+                            <Eye size={20} />
+                          </motion.button>
+
+                          {/* Heart */}
+                          <motion.button
+                            variants={iconVariants}
+                            whileHover={{
+                              scale: [1, 1.3, 1],
+                              backgroundColor: "#dc2626",
+                              color: "#fff",
+                              boxShadow: "0 0 12px #dc2626",
+                            }}
+                            transition={{ duration: 0.6 }}
+                            className="w-12 h-12 flex items-center justify-center rounded-full bg-white text-gray-700 shadow-lg"
+                          >
+                            <Heart size={20} />
+                          </motion.button>
+                        </div>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+                </div>
+
+                {/* Info */}
+                <div className="p-4 text-center">
+                  <p className="text-gray-800 font-medium">{shoe.price}</p>
+                  <h3 className="text-base font-semibold text-red-600">
+                    {shoe.name}
+                  </h3>
+                  <p className="text-sm text-gray-500">Sneakers</p>
+                </div>
+              </motion.div>
+            ))}
+          </section>
+        </div>
+
+        {/* Pagination */}
+        <div className="flex justify-center mt-10 space-x-2">
+          <button
+            onClick={() => goToPage(currentPage - 1)}
+            disabled={currentPage === 1}
+            className={`px-4 py-2 rounded ${
+              currentPage === 1
+                ? "bg-gray-300 text-gray-500 cursor-not-allowed"
+                : "bg-gray-200 hover:bg-gray-300"
+            }`}
+          >
+            Previous
+          </button>
+
+          {Array.from({ length: totalPages }, (_, i) => (
+            <button
+              key={i + 1}
+              onClick={() => goToPage(i + 1)}
+              className={`px-4 py-2 rounded ${
+                currentPage === i + 1
+                  ? "bg-black text-white"
+                  : "bg-gray-200 hover:bg-gray-300"
+              }`}
+            >
+              {i + 1}
+            </button>
+          ))}
+
+          <button
+            onClick={() => goToPage(currentPage + 1)}
+            disabled={currentPage === totalPages}
+            className={`px-4 py-2 rounded ${
+              currentPage === totalPages
+                ? "bg-gray-300 text-gray-500 cursor-not-allowed"
+                : "bg-gray-200 hover:bg-gray-300"
+            }`}
+          >
+            Next
+          </button>
+        </div>
+      </div>
+      <Footer />
+    </>
+  );
 };
 
-
-export default AllProduct
+export default AllProduct;
