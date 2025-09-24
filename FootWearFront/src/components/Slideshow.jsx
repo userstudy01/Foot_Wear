@@ -1589,9 +1589,9 @@ const SLIDE_DURATION = 4500;
 const products = [
   {
     id: 1,
-    name: "UNA CHAIR",
+    name: "Air Force 1",
     subtitle: "minimalist • creative • flexible",
-    desc: "Find a bright ideal to suit your taste with our great selection of suspension, wall & table designs.",
+    desc: "Classic look; works with many outfits; many colorways.",
     price: "$102.84",
     sku: "B02",
     image: Images.Slide2,
@@ -1600,9 +1600,9 @@ const products = [
   },
   {
     id: 2,
-    name: "TEAPOT",
+    name: "Dunk Low",
     subtitle: "modern • stylish • elegant",
-    desc: "Made for everyday rituals with timeless materials and calm proportions for your space.",
+    desc: "Comfort, visible air, good cushion for daily wear or long walks.",
     price: "$120.05",
     sku: "B03",
     image: Images.Logo,
@@ -1611,9 +1611,9 @@ const products = [
   },
   {
     id: 3,
-    name: "LINAS CREW",
+    name: "Samba",
     subtitle: "calm • focused • timeless",
-    desc: "Understated silhouettes crafted to last. Elevate your room with warm neutrals.",
+    desc: "Iconic; good for casual / street style (if you like that style).",
     price: "$183.76",
     sku: "B04",
     image: Images.Logo1,
@@ -1656,7 +1656,7 @@ export default function Slideshow() {
     return () => clearTimeout(timerRef.current);
   }, [active]);
 
-  
+
 
   const progressKey = useMemo(() => product.id + "-progress", [product.id]);
 

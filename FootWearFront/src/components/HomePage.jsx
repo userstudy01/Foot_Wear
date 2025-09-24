@@ -86,7 +86,7 @@ const HomePage = () => {
             </section> */}
 
             {/* Reviews */}
-            <ReviewsPage />
+            {/* <ReviewsPage /> */}
             {/* <section className="py-10 text-center">
                 <h2 className="text-3xl font-bold mb-6">Customer Reviews</h2>
                 <div className="flex flex-col md:flex-row justify-center gap-6 px-8">

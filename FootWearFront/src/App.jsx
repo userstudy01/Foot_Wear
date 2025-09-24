@@ -12,6 +12,8 @@ import Contact_US from "./components/Contact_US";
 import Blog from "./components/Blog";
 import BlogDetails from "./components/BlogDetails";
 import ProductsDetails from "./components/ProductsDetails";
+import CartPage from "./components/CartPage";
+import AllProduct from "./components/AllProduct";
 
 function App() {
   return (
@@ -30,7 +32,9 @@ function App() {
         <Route path="/contactus" element={<Contact_US />} />
         <Route path="/blog" element={<Blog />} />
         <Route path="/blog/:id" element={<BlogDetails />} />
-        <Route path="/allproduct" element={<ProductsDetails />} />
+        {/* <Route path="/allproduct" element={<ProductsDetails />} /> */}
+        <Route path="/cart" element={<CartPage />} />
+        <Route path="/allproduct" element={<AllProduct />} />
         {/* <Route path="/productdetils" element={<Produc_tDetails />} /> */}
         {/* <Route path="/productdetiles" element={<ProductD />} /> */}
       </Routes>

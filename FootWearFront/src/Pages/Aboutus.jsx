@@ -196,7 +196,6 @@ const AboutUs = () => {
                 </button>
             </section>
 
-            <CartPage />
             {/* Promo Banner Section */}
 
             <section className="w-full bg-white">

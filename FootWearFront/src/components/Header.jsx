@@ -1,7 +1,8 @@
 import React, { useRef, useState } from "react";
 import { Menu, X, Search, ShoppingCart, User } from "lucide-react";
-import Logo from '../assets/shoes-logo-removebg-preview.png'
+import Logo from '../assets/shoes-logo-removebg-preview.png';
 import { Link } from 'react-router-dom';
+import SearchPopup from "../components/SearchPopup"; // ✅ fixed import name
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false); // mobile menu
@@ -15,53 +16,100 @@ const Header = () => {
           {/* Logo */}
           <div className="flex items-center space-x-2">
             <span className="text-2xl font-bold">Shoes</span>
-            <img
-              src={Logo}
-              alt="Logo"
-              className="w-8 h-8"
-            />
+            <img src={Logo} alt="Logo" className="w-8 h-8" />
             <span className="text-2xl font-bold">Site</span>
           </div>
 
           {/* Desktop Menu */}
           <nav className="hidden md:flex space-x-8 items-center">
             <a href="/" className="hover:text-orange-400">Home</a>
-            <div className="relative group inline-block">
+            {/* <div className="relative group inline-block">
               <div className="cursor-pointer hover:text-orange-400">Product</div>
               <div className="absolute left-0 mt-2 bg-white rounded shadow-lg w-40 opacity-0 pointer-events-none group-hover:opacity-100 group-hover:pointer-events-auto transition duration-200 z-50">
                 <a href="/men" className="block px-4 py-2 text-gray-900 hover:bg-gray-100">Men</a>
                 <a href="/women" className="block px-4 py-2 text-gray-900 hover:bg-gray-100">Women</a>
                 <a href="/kids" className="block px-4 py-2 text-gray-900 hover:bg-gray-100">Kids</a>
               </div>
-            </div>
+            </div> */}
             <div className="relative group inline-block">
-              <div href="#" className="cursor-pointer hover:text-orange-400">Pages</div>
+              <div className="cursor-pointer hover:text-orange-400">Product</div>
+
+              {/* Dropdown */}
+              <div
+                className="absolute left-0 mt-2 bg-white rounded shadow-lg w-40
+               opacity-0 invisible group-hover:opacity-100 group-hover:visible
+               transition-all duration-200 z-50"
+              >
+                <a href="/allproduct" className="block px-4 py-2 text-gray-900 hover:bg-gray-100">Men</a>
+                <a href="/women" className="block px-4 py-2 text-gray-900 hover:bg-gray-100">Women</a>
+                <a href="/kids" className="block px-4 py-2 text-gray-900 hover:bg-gray-100">Kids</a>
+              </div>
+            </div>
+
+
+            {/* <div className="relative group inline-block">
+              <div className="cursor-pointer hover:text-orange-400">Pages</div>
               <div className="absolute left-0 mt-2 bg-white rounded shadow-lg w-40 opacity-0 pointer-events-none group-hover:opacity-100 group-hover:pointer-events-auto transition duration-200 z-50">
                 <a href="/aboutus" className="block px-4 py-2 text-gray-900 hover:bg-gray-100">About us</a>
                 <a href="/blog" className="block px-4 py-2 text-gray-900 hover:bg-gray-100">Blog</a>
-                {/* <a href="/kids" className="block px-4 py-2 hover:bg-gray-100">Kids</a> */}
+              </div>
+            </div> */}
+            <div className="relative group inline-block">
+              <div className="cursor-pointer hover:text-orange-400">Pages</div>
+
+              <div
+                className="absolute left-0 mt-2 bg-white rounded shadow-lg w-40
+               opacity-0 invisible group-hover:opacity-100 group-hover:visible
+               transition-all duration-200 z-50"
+              >
+                <a
+                  href="/aboutus"
+                  className="block px-4 py-2 text-gray-900 hover:bg-gray-100"
+                >
+                  About us
+                </a>
+                <a
+                  href="/blog"
+                  className="block px-4 py-2 text-gray-900 hover:bg-gray-100"
+                >
+                  Blog
+                </a>
               </div>
             </div>
-            <Link to="/aboutus" className="hover:text-orange-400">
-              About
-            </Link>
-            <Link to="/contactus" className="hover:text-orange-400">
-              Contact US
-            </Link>
+
+            {/* <Link to="/aboutus" className="hover:text-orange-400">About</Link> */}
+            <Link to="/contactus" className="hover:text-orange-400">Contact US</Link>
+            <Link to="/AllProduct" className="hover:text-orange-400">All Product</Link>
           </nav>
 
-          {/* Search + Cart */}
+          {/* Search + Cart (Desktop) */}
           <div className="hidden md:flex items-center space-x-2">
             <div className="flex items-center bg-gray-800 rounded-full overflow-hidden">
               <input
+                ref={headerInputRef}   // ✅ fixed ref
                 type="text"
                 placeholder="Search"
-                className="bg-gray-800 text-gray-300 px-4 py-2 outline-none w-40 md:w-56"
+                className="bg-gray-800 text-gray-300 px-4 py-2 outline-none w-40 md:w-56 cursor-pointer"
+                onFocus={() => setSearchOpen(true)} // ✅ open popup
+                readOnly
               />
-              <button className="bg-orange-600 p-2 rounded-full hover:bg-orange-500">
+              <button
+                onClick={() => setSearchOpen(true)} // ✅ also opens popup
+                className="bg-orange-600 p-2 rounded-full hover:bg-orange-500"
+              >
                 <Search size={18} />
               </button>
             </div>
+
+            {/* Cart */}
+            <Link
+              to="/cart"
+              className="bg-orange-600 p-2 rounded-full hover:bg-orange-500 flex items-center justify-center"
+            >
+              <ShoppingCart size={18} />
+            </Link>
+
+            {/* User */}
             <Link
               to="/signin"
               className="bg-orange-600 p-2 rounded-full hover:bg-orange-500 flex items-center justify-center"
@@ -83,37 +131,34 @@ const Header = () => {
       {isOpen && (
         <div className="md:hidden bg-black px-4 py-4 space-y-4">
           <nav className="flex flex-col space-y-2">
-            <a href="#" className="text-orange-400 font-semibold">Home</a>
-            <a href="#" className="hover:text-orange-400">Shop</a>
-            <a href="#" className="hover:text-orange-400">Blog</a>
-            <a href="#" className="hover:text-orange-400">Pages</a>
-            <a href="#" className="hover:text-orange-400">About</a>
+            <a href="/" className="text-orange-400 font-semibold">Home</a>
+            <a href="/shop" className="hover:text-orange-400">Shop</a>
+            <a href="/blog" className="hover:text-orange-400">Blog</a>
+            <a href="/about" className="hover:text-orange-400">About</a>
           </nav>
 
           <div className="flex items-center space-x-2 mt-4">
-            <div className="flex items-center bg-gray-800 rounded-full overflow-hidden w-full">
-              <input
-                type="text"
-                placeholder="Search"
-                className="bg-gray-800 text-gray-300 px-4 py-2 outline-none w-full cursor-pointer"
-                onFocus={() => setSearchOpen(true)}
-                readOnly
-              />
-              <button
-                className="bg-orange-600 p-2 rounded-full hover:bg-orange-500"
-                onClick={() => setSearchOpen(true)}
-              >
-                <Search size={18} />
-              </button>
-            </div>
-            <button className="bg-orange-600 p-2 rounded-full hover:bg-orange-500">
-              <ShoppingCart size={18} />
+            <input
+              type="text"
+              placeholder="Search"
+              className="bg-gray-800 text-gray-300 px-4 py-2 outline-none w-full cursor-pointer"
+              onFocus={() => setSearchOpen(true)}
+              readOnly
+            />
+            <button
+              className="bg-orange-600 p-2 rounded-full hover:bg-orange-500"
+              onClick={() => setSearchOpen(true)}
+            >
+              <Search size={18} />
             </button>
           </div>
         </div>
       )}
+
+      {/* ✅ Popup */}
       <SearchPopup isOpen={searchOpen} onClose={() => setSearchOpen(false)} />
     </header>
   );
-}
-export default Header
+};
+
+export default Header;
