@@ -506,148 +506,6 @@ const AllProduct = () => {
         <div className="flex justify-between items-center mb-8">
           <h1 className="text-2xl font-bold">Man Shoes</h1>
 
-<<<<<<< HEAD
-          {/* Right side */}
-          <div className="flex items-center gap-6 text-gray-500 text-sm">
-            {/* <span>Home &gt; Man &gt; Shoes</span> */}
-            <div>
-              Sort by:{" "}
-              <select className="border-none focus:ring-0 text-black">
-                <option>Popular</option>
-                <option>Newest</option>
-                <option>Price Low to High</option>
-                <option>Price High to Low</option>
-              </select>
-            </div>
-
-            {/* Grid Toggle Buttons */}
-            <div className="flex border rounded overflow-hidden">
-              {[2, 3, 4].map((n) => (
-                <button
-                  key={n}
-                  onClick={() => setGridCols(n)}
-                  className={`px-4 py-2 text-sm border-r last:border-r-0 
-                    ${gridCols === n
-                      ? "bg-black text-white"
-                      : "bg-white text-gray-600 hover:bg-gray-100"
-                    }`}
-                >
-                  {"|".repeat(n)}
-                </button>
-              ))}
-            </div>
-          </div>
-        </div>
-
-        {/* Content */}
-        <div className="flex gap-8">
-          {/* Sidebar Filters (as it is) */}
-          {filterOpen && (
-            <aside className="bg-white rounded-xl shadow-md p-6 w-72 hidden lg:block sticky top-24 h-fit space-y-8">
-              {/* Section: Availability */}
-              <div>
-                <h3 className="font-semibold text-gray-800 mb-3 border-b pb-2">
-                  Availability
-                </h3>
-                <label className="flex items-center text-gray-600 hover:text-black cursor-pointer mb-2">
-                  <input type="checkbox" className="mr-2" /> In stock (15)
-                </label>
-                <label className="flex items-center text-gray-600 hover:text-black cursor-pointer">
-                  <input type="checkbox" className="mr-2" /> Out of stock (10)
-                </label>
-              </div>
-
-              {/* Section: Price */}
-              <div>
-                <h3 className="font-semibold text-gray-800 mb-3 border-b pb-2">
-                  Price
-                </h3>
-                <input
-                  type="range"
-                  min="0"
-                  max="250"
-                  className="w-full accent-black"
-                />
-                <div className="flex justify-between text-xs mt-3 text-gray-500">
-                  <input
-                    type="number"
-                    placeholder="0"
-                    className="border p-1 w-16 rounded"
-                  />
-                  <span>-</span>
-                  <input
-                    type="number"
-                    placeholder="250"
-                    className="border p-1 w-16 rounded"
-                  />
-                </div>
-              </div>
-
-              {/* Section: Brand */}
-              <div>
-                <h3 className="font-semibold text-gray-800 mb-3 border-b pb-2">
-                  Brand
-                </h3>
-                <div className="space-y-2">
-                  {brands
-                    .slice(0, showMoreBrands ? brands.length : 6)
-                    .map((b, i) => (
-                      <label
-                        key={i}
-                        className="flex items-center text-gray-600 hover:text-black cursor-pointer"
-                      >
-                        <input type="checkbox" className="mr-2" /> {b}
-                      </label>
-                    ))}
-                </div>
-                <button
-                  onClick={() => setShowMoreBrands(!showMoreBrands)}
-                  className="text-sm text-blue-600 mt-2"
-                >
-                  {showMoreBrands ? "− Show less" : "+ Show more"}
-                </button>
-              </div>
-
-              {/* Section: Color */}
-              <div>
-                <h3 className="font-semibold text-gray-800 mb-3 border-b pb-2">
-                  Color
-                </h3>
-                <div className="flex flex-wrap gap-2">
-                  {(showMoreColors ? colors : colors.slice(0, 8)).map(
-                    (c, i) => (
-                      <span
-                        key={i}
-                        className="w-6 h-6 rounded-full border shadow-sm cursor-pointer hover:scale-110 transition"
-                        style={{ backgroundColor: c }}
-                      ></span>
-                    )
-                  )}
-                </div>
-                <button
-                  onClick={() => setShowMoreColors(!showMoreColors)}
-                  className="text-sm text-blue-600 mt-2 block"
-                >
-                  {showMoreColors ? "− Show less" : "+ Show more"}
-                </button>
-              </div>
-            </aside>
-          )}
-
-          {/* Product Grid */}
-          <section className={`grid gap-8 flex-1 ${gridMap[gridCols]}`}>
-            {currentShoes.map((shoe) => (
-              <motion.div
-                key={shoe.id}
-                className="relative border border-gray-200 rounded-lg overflow-hidden bg-white shadow-md group cursor-pointer"
-                onMouseEnter={() => setHovered(shoe.id)}
-                onMouseLeave={() => setHovered(null)}
-                whileHover={{
-                  scale: 1.03,
-                  boxShadow: "0px 8px 25px rgba(0,0,0,0.15)",
-                }}
-                transition={{ type: "spring", stiffness: 200, damping: 15 }}
-=======
           {/* Grid Toggle */}
           <div className="flex border rounded overflow-hidden">
             {[2, 3, 4].map((n) => (
@@ -655,12 +513,10 @@ const AllProduct = () => {
                 key={n}
                 onClick={() => setGridCols(n)}
                 className={`px-4 py-2 text-sm border-r last:border-r-0
-                  ${
-                    gridCols === n
-                      ? "bg-black text-white"
-                      : "bg-white text-gray-600 hover:bg-gray-100"
+                  ${gridCols === n
+                    ? "bg-black text-white"
+                    : "bg-white text-gray-600 hover:bg-gray-100"
                   }`}
->>>>>>> cee0d7b7d8bacabfaa0c51f4ccab92422c1e5687
               >
                 {"|".repeat(n)}
               </button>
@@ -672,51 +528,51 @@ const AllProduct = () => {
         <section className={`grid gap-8 flex-1 ${gridMap[gridCols]}`}>
           {loading
             ? Array.from({ length: itemsPerPage }).map((_, i) => (
-                <SkeletonCard key={i} />
-              ))
+              <SkeletonCard key={i} />
+            ))
             : currentShoes.map((shoe) => (
-                <motion.div
-                  key={shoe.id}
-                  className="relative border border-gray-200 rounded-lg overflow-hidden bg-white shadow-md group cursor-pointer"
-                  onMouseEnter={() => setHovered(shoe.id)}
-                  onMouseLeave={() => setHovered(null)}
-                  whileHover={{
-                    scale: 1.03,
-                    boxShadow: "0px 8px 25px rgba(0,0,0,0.15)",
-                  }}
-                  transition={{ type: "spring", stiffness: 200, damping: 15 }}
-                >
-                  {/* Image */}
-                  <div className="relative h-56 flex items-center justify-center bg-gray-50 overflow-hidden">
-                    <motion.img
-                      src={
-                        hovered === shoe.id
-                          ? shoe.hoverImage || shoe.img
-                          : shoe.img
-                      }
-                      alt={shoe.name}
-                      className="max-h-full max-w-full object-contain transition-transform duration-500"
-                      animate={
-                        hovered === shoe.id ? { y: [-5, 5, -5] } : { y: 0 }
-                      }
-                      transition={{
-                        repeat: hovered === shoe.id ? Infinity : 0,
-                        duration: 3,
-                        ease: "easeInOut",
-                      }}
-                    />
-                  </div>
+              <motion.div
+                key={shoe.id}
+                className="relative border border-gray-200 rounded-lg overflow-hidden bg-white shadow-md group cursor-pointer"
+                onMouseEnter={() => setHovered(shoe.id)}
+                onMouseLeave={() => setHovered(null)}
+                whileHover={{
+                  scale: 1.03,
+                  boxShadow: "0px 8px 25px rgba(0,0,0,0.15)",
+                }}
+                transition={{ type: "spring", stiffness: 200, damping: 15 }}
+              >
+                {/* Image */}
+                <div className="relative h-56 flex items-center justify-center bg-gray-50 overflow-hidden">
+                  <motion.img
+                    src={
+                      hovered === shoe.id
+                        ? shoe.hoverImage || shoe.img
+                        : shoe.img
+                    }
+                    alt={shoe.name}
+                    className="max-h-full max-w-full object-contain transition-transform duration-500"
+                    animate={
+                      hovered === shoe.id ? { y: [-5, 5, -5] } : { y: 0 }
+                    }
+                    transition={{
+                      repeat: hovered === shoe.id ? Infinity : 0,
+                      duration: 3,
+                      ease: "easeInOut",
+                    }}
+                  />
+                </div>
 
-                  {/* Info */}
-                  <div className="p-4 text-center">
-                    <p className="text-gray-800 font-medium">{shoe.price}</p>
-                    <h3 className="text-base font-semibold text-red-600">
-                      {shoe.name}
-                    </h3>
-                    <p className="text-sm text-gray-500">Sneakers</p>
-                  </div>
-                </motion.div>
-              ))}
+                {/* Info */}
+                <div className="p-4 text-center">
+                  <p className="text-gray-800 font-medium">{shoe.price}</p>
+                  <h3 className="text-base font-semibold text-red-600">
+                    {shoe.name}
+                  </h3>
+                  <p className="text-sm text-gray-500">Sneakers</p>
+                </div>
+              </motion.div>
+            ))}
         </section>
 
         {/* Pagination */}

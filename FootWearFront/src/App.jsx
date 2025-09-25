@@ -14,6 +14,8 @@ import BlogDetails from "./components/BlogDetails";
 import ProductsDetails from "./components/ProductsDetails";
 import CartPage from "./components/CartPage";
 import AllProduct from "./components/AllProduct";
+import NewBlog from "./components/NewBlog";
+import NewBlogDetails from "./components/NewBlogDetails";
 
 function App() {
   return (
@@ -35,6 +37,8 @@ function App() {
         {/* <Route path="/allproduct" element={<ProductsDetails />} /> */}
         <Route path="/cart" element={<CartPage />} />
         <Route path="/allproduct" element={<AllProduct />} />
+        <Route path="/NewBlog" element={<NewBlog />} />
+        <Route path="/NewBlogDetails" element={<NewBlogDetails />} />
         {/* <Route path="/productdetils" element={<Produc_tDetails />} /> */}
         {/* <Route path="/productdetiles" element={<ProductD />} /> */}
       </Routes>
