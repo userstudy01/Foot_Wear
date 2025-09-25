@@ -77,6 +77,7 @@
 
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import { motion, AnimatePresence } from "framer-motion";
 import Header from "./Header";
 import Footer from "./Footer";
 
@@ -90,13 +91,7 @@ const allBlogs = Array.from({ length: 10 }, (_, i) => ({
     "A recent study has found that sleep aromatherapy may notably enhance memory.",
   image: `https://picsum.photos/seed/${i + 1}/800/500`,
   tag: "NEWS",
-  content: `Full blog content for ${
-    i + 1
-  }. This is a longer text that represents the blog details A recent study has found that sleep aromatherapy may notably enhance memory, suggesting a non-invasive method protect against dementia.
-A new study by neuroscientists from the University of California, Irvine indicates that exposure to scent during sleep can notably enhance memory. Researchers say the findings indicate a non-invasive method to bolster memory and potentially protect against dementia.
-Releasing a scent into the bedrooms of older adults for two hours nightly over a span of six months, was found to be associated with significant memory improvements. According to a media release, study participants experienced a 226% increase in cognitive capacity compared to a control group.
-Men and women aged 60 to 85 without memory impairment were divided into two groups and given a diffuser and seven cartridges, each containing a single and different natural oil. The enriched group received full-strength cartridges and the control group received the oils in tiny amounts. Participants put a different cartridge into the diffuser each evening before going to bed, and it activated for two hours as they slept.
-The scents they used were rose, orange, eucalyptus, lemon, peppermint, rosemary, and lavender..`,
+  content: `Full blog content for ${i + 1}. This is a longer text...`,
 }));
 
 const Blog = () => {
@@ -118,37 +113,63 @@ const Blog = () => {
       <Header />
       <div className="w-full mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {blogs.map((blog) => (
-            <div key={blog.id} className="flex flex-col border-b pb-6">
-              <img
-                src={blog.image}
-                alt={blog.title}
-                className="w-full h-64 object-cover rounded-lg mb-4"
-              />
-              <div className="flex flex-col justify-between flex-grow">
-                <div>
-                  <h2 className="text-xl font-semibold mb-2">{blog.title}</h2>
-                  <p className="text-gray-600 mb-4">{blog.description}</p>
+          <AnimatePresence>
+            {blogs.map((blog, index) => (
+              <motion.div
+                key={blog.id}
+                className="flex flex-col border-b pb-6"
+                initial={{ opacity: 0, y: 40 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -20 }}
+                transition={{ duration: 0.5, delay: index * 0.15 }} // stagger effect
+              >
+                <motion.img
+                  src={blog.image}
+                  alt={blog.title}
+                  className="w-full h-64 object-cover rounded-lg mb-4"
+                  initial={{ clipPath: "inset(100% 0% 0% 0%)" }}
+                  animate={{ clipPath: "inset(0% 0% 0% 0%)" }}
+                  transition={{ duration: 0.8, ease: "easeOut" }}
+                />
+
+                <div className="flex flex-col justify-between flex-grow">
+                  <div>
+                    <h2 className="text-xl font-semibold mb-2">{blog.title}</h2>
+                    <motion.p
+                      className="text-gray-600 mb-4"
+                      initial={{ opacity: 0.7 }}
+                      whileHover={{ opacity: 1 }}
+                      transition={{ duration: 0.3 }}
+                    >
+                      {blog.description}
+                    </motion.p>
+                  </div>
+                  <motion.div whileHover={{ x: 5 }}>
+                    <Link
+                      to={`/blog/${blog.id}`}
+                      className="border border-black px-5 py-2 rounded-md hover:bg-black hover:text-white transition self-start inline-block"
+                    >
+                      Read More
+                    </Link>
+                  </motion.div>
                 </div>
-                <Link
-                  to={`/blog/${blog.id}`}
-                  className="border border-black px-5 py-2 rounded-md hover:bg-black hover:text-white transition self-start"
-                >
-                  Read More
-                </Link>
-              </div>
-            </div>
-          ))}
+              </motion.div>
+            ))}
+          </AnimatePresence>
         </div>
 
         {visibleCount < allBlogs.length && (
           <div className="flex justify-center mt-10">
-            <button
+            <motion.button
               onClick={loadMoreBlogs}
               className="px-6 py-3 border border-black rounded-md hover:bg-black hover:text-white transition"
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.95 }}
+              animate={{ scale: [1, 1.05, 1] }}
+              transition={{ repeat: Infinity, duration: 2 }}
             >
               View More
-            </button>
+            </motion.button>
           </div>
         )}
       </div>
