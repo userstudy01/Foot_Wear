@@ -42,7 +42,7 @@ const Header = () => {
               >
                 <a href="/allproduct" className="block px-4 py-2 text-gray-900 hover:bg-gray-100">Men</a>
                 <a href="/women" className="block px-4 py-2 text-gray-900 hover:bg-gray-100">Women</a>
-                <a href="/kids" className="block px-4 py-2 text-gray-900 hover:bg-gray-100">Kids</a>
+                {/* <a href="/kids" className="block px-4 py-2 text-gray-900 hover:bg-gray-100">Kids</a> */}
               </div>
             </div>
 
@@ -79,7 +79,7 @@ const Header = () => {
 
             {/* <Link to="/aboutus" className="hover:text-orange-400">About</Link> */}
             <Link to="/contactus" className="hover:text-orange-400">Contact US</Link>
-            <Link to="/AllProduct" className="hover:text-orange-400">All Product</Link>
+            {/* <Link to="/AllProduct" className="hover:text-orange-400">All Product</Link> */}
           </nav>
 
           {/* Search + Cart (Desktop) */}

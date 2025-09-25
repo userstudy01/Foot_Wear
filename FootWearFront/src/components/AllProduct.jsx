@@ -137,7 +137,7 @@ const AllProduct = () => {
 
           {/* Right side */}
           <div className="flex items-center gap-6 text-gray-500 text-sm">
-            <span>Home &gt; Man &gt; Shoes</span>
+            {/* <span>Home &gt; Man &gt; Shoes</span> */}
             <div>
               Sort by:{" "}
               <select className="border-none focus:ring-0 text-black">
@@ -155,10 +155,9 @@ const AllProduct = () => {
                   key={n}
                   onClick={() => setGridCols(n)}
                   className={`px-4 py-2 text-sm border-r last:border-r-0 
-                    ${
-                      gridCols === n
-                        ? "bg-black text-white"
-                        : "bg-white text-gray-600 hover:bg-gray-100"
+                    ${gridCols === n
+                      ? "bg-black text-white"
+                      : "bg-white text-gray-600 hover:bg-gray-100"
                     }`}
                 >
                   {"|".repeat(n)}
@@ -374,11 +373,10 @@ const AllProduct = () => {
           <button
             onClick={() => goToPage(currentPage - 1)}
             disabled={currentPage === 1}
-            className={`px-4 py-2 rounded ${
-              currentPage === 1
-                ? "bg-gray-300 text-gray-500 cursor-not-allowed"
-                : "bg-gray-200 hover:bg-gray-300"
-            }`}
+            className={`px-4 py-2 rounded ${currentPage === 1
+              ? "bg-gray-300 text-gray-500 cursor-not-allowed"
+              : "bg-gray-200 hover:bg-gray-300"
+              }`}
           >
             Previous
           </button>
@@ -387,11 +385,10 @@ const AllProduct = () => {
             <button
               key={i + 1}
               onClick={() => goToPage(i + 1)}
-              className={`px-4 py-2 rounded ${
-                currentPage === i + 1
-                  ? "bg-black text-white"
-                  : "bg-gray-200 hover:bg-gray-300"
-              }`}
+              className={`px-4 py-2 rounded ${currentPage === i + 1
+                ? "bg-black text-white"
+                : "bg-gray-200 hover:bg-gray-300"
+                }`}
             >
               {i + 1}
             </button>
@@ -400,11 +397,10 @@ const AllProduct = () => {
           <button
             onClick={() => goToPage(currentPage + 1)}
             disabled={currentPage === totalPages}
-            className={`px-4 py-2 rounded ${
-              currentPage === totalPages
-                ? "bg-gray-300 text-gray-500 cursor-not-allowed"
-                : "bg-gray-200 hover:bg-gray-300"
-            }`}
+            className={`px-4 py-2 rounded ${currentPage === totalPages
+              ? "bg-gray-300 text-gray-500 cursor-not-allowed"
+              : "bg-gray-200 hover:bg-gray-300"
+              }`}
           >
             Next
           </button>
