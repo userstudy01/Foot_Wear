@@ -68,137 +68,35 @@ const AboutUs = () => {
         <>
             <Header />
             {/* About Us Section */}
-            <section className="relative bg-[#fbf7f3] overflow-hidden min-h-[650px]">
-                {/* Top thin yellow stripe */}
-                <div className="absolute top-0 left-0 w-full h-[3px] bg-[#ffe97a] z-30" />
+            <section
+                className="relative overflow-hidden min-h-[350px] bg-cover bg-center flex items-center justify-center text-center mb-5"
+                style={{
+                    backgroundImage: `url(${images.About_us})`,
+                }}
+            >
+                {/* Dark overlay for readability */}
+                <div className="absolute inset-0 bg-black/50"></div>
 
-                {/* Top faint white band */}
-                <div className="absolute top-[3px] left-0 w-full h-8 bg-[#fffaf6] z-20" />
+                {/* Content */}
+                <div className="relative z-10 max-w-3xl mx-auto px-4">
+                    <h1
+                        className="text-[72px] font-extrabold leading-[1.1] text-white tracking-tight"
+                        style={{ fontFamily: 'Montserrat, Poppins, Arial, sans-serif' }}
+                    >
+                        About Us
+                    </h1>
 
-                {/* Faint circle decoration */}
-                <svg
-                    className="absolute top-[70px] left-[-40px] h-[220px] w-[220px] z-10 opacity-70"
-                    viewBox="0 0 120 120"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                >
-                    <circle cx="60" cy="60" r="57" stroke="#f2d7c5" strokeWidth="2.5" />
-                    <circle cx="40" cy="70" r="49" stroke="#fff" strokeWidth="2" opacity="0.7" />
-                </svg>
-
-                {/* Content Container */}
-                <div className="relative z-40 max-w-[1440px] mx-auto w-full flex px-10 xl:px-28 py-20 min-h-[400px] items-center justify-between">
-                    {/* Left Side Text */}
-                    <div className="flex-1 flex flex-col gap-8 items-start">
-                        <h1
-                            className="text-[72px] font-extrabold leading-[1.1] text-[#202032] tracking-tight"
-                            style={{ fontFamily: 'Montserrat, Poppins, Arial, sans-serif' }}
-                        >
-                            About Us
-                        </h1>
-                        <div className="flex items-center space-x-4 text-[22px] font-sans">
-                            <span className="text-[#ea395f] font-semibold leading-[1.1]">Home</span>
-                            <ChevronRight className="w-6 h-6 text-[#202032]" />
-                            <span className="text-[#202032] font-medium leading-[1.1]">About Us</span>
-                        </div>
-                    </div>
-
-                    {/* Right Side Image and Decorations */}
-                    <div className="flex-1 relative flex items-center justify-end h-full">
-                        {/* Dashed arrow SVG */}
-                        <svg
-                            viewBox="0 0 100 50"
-                            className="absolute -top-4 left-[90px] w-[90px] h-[60px] z-50"
-                            fill="none"
-                            xmlns="http://www.w3.org/2000/svg"
-                        >
-                            <path
-                                d="M10 30C30 5,70 55,95 20"
-                                stroke="black"
-                                strokeWidth="2.5"
-                                strokeDasharray="8 6"
-                            />
-                            <polyline
-                                points="95,20 91,18 93,20 91,22"
-                                fill="none"
-                                stroke="black"
-                                strokeWidth="2"
-                            />
-                        </svg>
-
-                        {/* Sparkles SVG */}
-                        <svg
-                            viewBox="0 0 60 60"
-                            className="absolute top-0 right-10 w-[66px] h-[60px] z-50"
-                            fill="none"
-                            xmlns="http://www.w3.org/2000/svg"
-                        >
-                            <g stroke="#202032" strokeWidth="3" strokeLinecap="round">
-                                <path d="M30 10 L30 21" />
-                                <path d="M30 50 L30 39" />
-                                <path d="M10 30 L21 30" />
-                                <path d="M50 30 L39 30" />
-                                <circle cx="30" cy="30" r="8" stroke="#FFD98A" strokeWidth="3" />
-                            </g>
-                            <g fill="#FFD98A">
-                                <circle cx="17" cy="14" r="2.5" />
-                                <circle cx="43" cy="14" r="2.5" />
-                                <circle cx="30" cy="46" r="1.5" />
-                            </g>
-                            <g fill="#202032">
-                                <circle cx="14" cy="38" r="1" />
-                                <circle cx="41" cy="43" r="1" />
-                            </g>
-                        </svg>
-
-                        {/* AboutGirl Image */}
-                        <img
-                            src={images.AboutGirl}
-                            alt="About Us"
-                            className="relative z-40 max-w-[480px] w-full object-contain pointer-events-none"
-                            style={{ marginBottom: '-40px', marginRight: '-40px' }}
-                            loading="lazy"
-                        />
+                    <div className="flex items-center justify-center space-x-4 text-[22px] font-sans mt-6">
+                        <span className="text-white font-semibold leading-[1.1]">Home</span>
+                        <ChevronRight className="w-6 h-6 text-white" />
+                        <span className="text-white font-medium leading-[1.1]">About Us</span>
                     </div>
                 </div>
-
-                {/* Bottom Wave */}
-                <div className="absolute bottom-0 left-0 right-0 w-full z-30 pointer-events-none">
-                    <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        preserveAspectRatio="none"
-                        viewBox="0 0 1440 150"
-                        className="w-full h-[140px]"
-                    >
-                        <path
-                            fill="#fffaf6"
-                            d="M0,64L48,74.7C96,85,192,107,288,101.3C384,96,480,64,576,69.3C672,75,768,117,864,117.3C960,117,1056,75,1152,74.7C1248,75,1344,117,1392,138.7L1440,150L1440,0L1392,0C1344,0,1248,0,1152,0C1056,0,960,0,864,0C768,0,672,0,576,0C480,0,384,0,288,0C192,0,96,0,48,0L0,0Z"
-                        />
-                    </svg>
-                </div>
-
-                {/* Scroll to top button */}
-                <button className="fixed bottom-6 right-6 bg-[#ea395f] text-white rounded-full p-4 shadow-xl hover:bg-[#c51b42] transition z-50">
-                    <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        className="h-6 w-6"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        stroke="currentColor"
-                    >
-                        <path
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            strokeWidth={2}
-                            d="M5 10l7-7m0 0l7 7m-7-7v18"
-                        />
-                    </svg>
-                </button>
             </section>
 
             {/* Promo Banner Section */}
 
-            <section className="w-full bg-white">
+            <section className="w-full bg-white mt-5">
                 <div className="flex w-full min-h-[530px] overflow-hidden">
                     {/* LEFT SIDE */}
                     <div className="flex flex-col items-center justify-center w-1/2 bg-[#f7f7f7] px-0">

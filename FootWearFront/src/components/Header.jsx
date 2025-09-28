@@ -69,7 +69,7 @@ const Header = () => {
                   About us
                 </a>
                 <a
-                  href="/blog"
+                  href="/Blog"
                   className="block px-4 py-2 text-gray-900 hover:bg-gray-100"
                 >
                   Blog

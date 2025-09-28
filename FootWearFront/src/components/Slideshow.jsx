@@ -1594,8 +1594,8 @@ const products = [
     desc: "Classic look; works with many outfits; many colorways.",
     price: "$102.84",
     sku: "B02",
-    image: Images.Slide2,
-    thumb: Images.Slide2,
+    image: Images.Nike_Air_force_1,
+    thumb: Images.Nike_Air_force_1,
     cta: "Discover Now",
   },
   {

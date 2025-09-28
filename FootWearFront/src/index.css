@@ -1,3 +1,102 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
+.dot-spinner {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 24px;
+    height: 24px;
+    position: relative;
+}
+
+.dot-spinner div {
+    width: 6px;
+    height: 6px;
+    background: #f97316;
+    /* orange-500 */
+    border-radius: 50%;
+    position: absolute;
+    animation: dotSpin 1.2s linear infinite;
+}
+
+.dot-spinner div:nth-child(1) {
+    top: 0;
+    left: 50%;
+    margin-left: -3px;
+    animation-delay: 0s;
+}
+
+.dot-spinner div:nth-child(2) {
+    top: 25%;
+    left: 75%;
+    margin-top: -3px;
+    margin-left: -3px;
+    animation-delay: -0.15s;
+}
+
+.dot-spinner div:nth-child(3) {
+    top: 50%;
+    left: 100%;
+    margin-top: -3px;
+    margin-left: -6px;
+    animation-delay: -0.3s;
+}
+
+.dot-spinner div:nth-child(4) {
+    top: 75%;
+    left: 75%;
+    margin-top: -6px;
+    margin-left: -3px;
+    animation-delay: -0.45s;
+}
+
+.dot-spinner div:nth-child(5) {
+    top: 100%;
+    left: 50%;
+    margin-top: -6px;
+    margin-left: -3px;
+    animation-delay: -0.6s;
+}
+
+.dot-spinner div:nth-child(6) {
+    top: 75%;
+    left: 25%;
+    margin-top: -6px;
+    margin-left: 0px;
+    animation-delay: -0.75s;
+}
+
+.dot-spinner div:nth-child(7) {
+    top: 50%;
+    left: 0;
+    margin-top: -3px;
+    margin-left: 0px;
+    animation-delay: -0.9s;
+}
+
+.dot-spinner div:nth-child(8) {
+    top: 25%;
+    left: 25%;
+    margin-top: -3px;
+    margin-left: 0px;
+    animation-delay: -1.05s;
+}
+
+@keyframes dotSpin {
+
+    0%,
+    20%,
+    80%,
+    100% {
+        transform: scale(0.5);
+        opacity: 0.6;
+    }
+
+    50% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
