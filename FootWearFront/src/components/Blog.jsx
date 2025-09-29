@@ -449,7 +449,7 @@ const Blog = () => {
                                     Learn More →
                                 </Link> */}
                 <a
-                  href={`/blog/${idx + 1}`}   // 👈 add index+1 as id
+                  href={`/blogDetails/${idx + 1}`}   // 👈 add index+1 as id
                   className="mt-3 inline-block text-sm font-medium text-gray-900 group-hover:text-orange-500 transition"
                 >
                   Learn More →

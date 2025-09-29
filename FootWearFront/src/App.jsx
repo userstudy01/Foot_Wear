@@ -13,6 +13,8 @@ import CartPage from "./components/CartPage";
 import AllProduct from "./components/AllProduct";
 import NewBlogDetails from "./components/NewBlogDetails";
 import ProductDetails from "./components/ProductDetails";
+import BlogDetails from "./components/BlogDetails";
+import Wishlist_Details from "./components/Wishlist_Details";
 
 function App() {
   return (
@@ -41,9 +43,13 @@ function App() {
 
         <Route path="/Blog" element={<Blog />} />
 
+        {/* <Route path="/BlogDetails/:id" element={<BlogDetails />} /> */}
+
         <Route path="/BlogDetails/:id" element={<NewBlogDetails />} />
 
         <Route path="/productdetails" element={<ProductDetails />} />
+
+        <Route path="/wishlistdetails" element={<Wishlist_Details />} />
 
       </Routes>
       <ToastContainer />

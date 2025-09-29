@@ -5,6 +5,7 @@ import { ShoppingCart, Eye, Heart } from "lucide-react";
 import images from "../assets/images"
 import Header from "./Header";
 import Footer from "./Footer";
+import { Link } from "react-router-dom";
 
 const ProductDetails = () => {
 
@@ -394,21 +395,18 @@ const ProductDetails = () => {
                                                         <Heart size={20} />
                                                     )}
                                                 </motion.button> */}
-
                                                 <motion.button
                                                     onClick={() => handleAddToWishlist(product)}
                                                     variants={iconVariants}
                                                     className="w-12 h-12 flex items-center justify-center rounded-full bg-white text-gray-700 shadow-lg"
                                                 >
                                                     {loadingId === product.id ? (
-                                                        <div className="dot-spinner">
-                                                            <div></div><div></div><div></div><div></div>
-                                                            <div></div><div></div><div></div><div></div>
-                                                        </div>
+                                                        <div className="circle-loader"></div>
                                                     ) : (
                                                         <Heart size={20} />
                                                     )}
                                                 </motion.button>
+
 
 
                                             </div>
@@ -431,19 +429,6 @@ const ProductDetails = () => {
                     ))}
                 </div>
             </div>
-            {/* Loader */}
-            <AnimatePresence>
-                {loading && (
-                    <motion.div
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        exit={{ opacity: 0 }}
-                        className="fixed inset-0 flex items-center justify-center bg-black/30 z-50"
-                    >
-                        <div className="w-10 h-10 border-4 border-orange-500 border-t-transparent rounded-full animate-spin"></div>
-                    </motion.div>
-                )}
-            </AnimatePresence>
 
             {/* Wishlist Popup */}
             <AnimatePresence>
@@ -487,9 +472,11 @@ const ProductDetails = () => {
 
                             {/* Footer */}
                             <div className="flex justify-between p-4 border-t bg-gray-100">
-                                <button className="px-4 py-2 text-white bg-black rounded hover:bg-gray-800">
-                                    OPEN WISHLIST PAGE
-                                </button>
+                                <Link to="/wishlistdetails">
+                                    <button className="px-4 py-2 text-white bg-black rounded hover:bg-gray-800">
+                                        OPEN WISHLIST PAGE
+                                    </button>
+                                </Link>
                                 <button
                                     onClick={() => setWishlistOpen(false)}
                                     className="px-4 py-2 text-black border border-black rounded hover:bg-black hover:text-white"
